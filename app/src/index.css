@@ -21,3 +21,15 @@ code {
   --secondary-color: #F39237;
   --accent-color: #BF1363;
 }
+
+.cls-blue {
+  fill:var(--primary-color);
+}
+
+.cls-1 {
+  fill:var(--bg-color);
+}
+
+.cls-2 {
+  fill: none;
+}
