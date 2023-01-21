@@ -42,13 +42,16 @@ ChartJS.register(
     Legend
 );
 
+
 import dashboard_icon from "./utils/img/dashboard.png";
 import orders_icon from "./utils/img/orders.png";
 import reports_icon from "./utils/img/reports.png";
 import products_icon from "./utils/img/products.png";
 import customers_icon from "./utils/img/customers.png";
 import integrations_icon from "./utils/img/integrations.png";
-
+import entrate_icon from "./utils/img/entrate.png";
+import perdite_icon from "./utils/img/perdite.png";
+import SimpleTable from "./Components/Reusable/Tables/SimpleTable";
 
 const Dashboard = () => {
     const navigate = useNavigate();
@@ -66,7 +69,7 @@ const Dashboard = () => {
         }, 3000);
 
         checkAuth();
-
+        loadData();
     }, []);
 
     /**
@@ -122,6 +125,7 @@ const Dashboard = () => {
         ],
     });
 
+
     /**
      * Funzione che mi permette di eliminare dei cookie quando il token scade
      * Al momento nei cookie ho solo il token
@@ -129,12 +133,20 @@ const Dashboard = () => {
     const checkAuth = async () => {
         const token = Cookies.get("token");
         const token_is_expired = isExpired(token);
+        // Non sei autenticato
         if (token_is_expired == true) {
             navigate('/login');
             Cookies.remove("token");
         }
     }
 
+    const [orders, setOrders] = useState([]);
+    const loadData = async () => {
+        axios.get('https://dummyjson.com/products')
+        .then(response => {
+            setOrders(response.data.products);
+        });
+    }
 
     return (
         <>
@@ -160,8 +172,12 @@ const Dashboard = () => {
                 </header>
                 <div className="container-fluid">
                     <div className="row">
-                        <nav id="sidebarMenu" className="col-md-3 col-lg-2 d-md-block sidebar collapse">
-                            <div className="position-sticky pt-3 sidebar-sticky">
+                        <nav id="sidebarMenu" className="px-md-4 mt-3 col-md-3 col-lg-2 d-md-block sidebar collapse">
+                            <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 ">
+                                <h1 className="ps-1 h2">Menu</h1>
+                            </div>
+
+                            <div className="position-sticky sidebar-sticky">
                                 <ul className="nav flex-column">
                                     <li className="nav-item">
                                         <a className="nav-link active" aria-current="page" href="#">
@@ -172,19 +188,19 @@ const Dashboard = () => {
                                     <li className="nav-item">
                                         <a className="nav-link" href="#">
                                             <img src={orders_icon} className="feather feather-file align-text-center me-2"></img>
-                                            Orders
+                                            Ordini
                                         </a>
                                     </li>
                                     <li className="nav-item">
                                         <a className="nav-link" href="#">
                                             <img src={products_icon} className="feather feather-file align-text-center me-2"></img>
-                                            Products
+                                            Prodotti
                                         </a>
                                     </li>
                                     <li className="nav-item">
                                         <a className="nav-link" href="#">
                                             <img src={customers_icon} className="feather feather-file align-text-center me-2"></img>
-                                            Customers
+                                            Clienti
                                         </a>
                                     </li>
                                     <li className="nav-item">
@@ -196,7 +212,7 @@ const Dashboard = () => {
                                     <li className="nav-item">
                                         <a className="nav-link" href="#">
                                             <img src={integrations_icon} className="feather feather-file align-text-center me-2"></img>
-                                            Integrations
+                                            Integrazioni
                                         </a>
                                     </li>
                                 </ul>
@@ -204,18 +220,60 @@ const Dashboard = () => {
                         </nav>
 
                         <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-3">
-                            <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                            <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 ">
                                 <h1 className="h2">Dashboard</h1>
                             </div>
-                            <div className="chart-wrapper p-5 mb-4 rounded-3">
-                                <div className="container-fluid py-5">
-                                    <h1 className="display-5 fw-bold">Statistiche sugli utenti</h1>
-                                    <div className="line-chart chart-container container">
-                                        <LineChart chartData={lineChartData} />
+                            <div className="content row align-items-md-stretch">
+                                <div className="col-md-9">
+                                    <div className="h-100 p-5 chart-wrapper rounded-3">
+                                        <h2>Statistiche sugli utenti</h2>
+                                        <div className="chart-container container">
+                                            <LineChart chartData={lineChartData} />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-md-3">
+                                    <div className="h-100 p-3 chart-wrapper rounded-3">
+                                        <h2 className="mt-3 mb-3">Statistiche generali</h2>
+                                        <div className="list-group w-auto nav flex-column">
+                                            <a href="#" className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                                                <img src={entrate_icon} alt="twbs" width="32" height="32" className="rounded-circle flex-shrink-0" />
+                                                <div className="d-flex gap-2 w-100 justify-content-between justify-content-center align-items-center">
+                                                    <div>
+                                                        <h6 className="mb-0">Entrate: 1300€</h6>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                                                <img src={perdite_icon} alt="twbs" width="32" height="32" className="rounded-circle flex-shrink-0" />
+                                                <div className="d-flex gap-2 w-100 justify-content-between justify-content-center align-items-center">
+                                                    <div>
+                                                        <h6 className="mb-0">Perdite: 500€</h6>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                                                <img src={products_icon} alt="twbs" width="32" height="32" className="rounded-circle flex-shrink-0" />
+                                                <div className="d-flex gap-2 w-100 justify-content-between justify-content-center align-items-center">
+                                                    <div>
+                                                        <h6 className="mb-0">Prodotti totali: 76</h6>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                                                <img src={customers_icon} alt="twbs" width="32" height="32" className="rounded-circle flex-shrink-0" />
+                                                <div className="d-flex gap-2 w-100 justify-content-between justify-content-center align-items-center">
+                                                    <div>
+                                                        <h6 className="mb-0">Clienti totali: 12578</h6>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="row align-items-md-stretch">
+                        
+                            <div className="row align-items-md-stretch mt-3">
                                 <div className="col-md-6">
                                     <div className="h-100 p-5 chart-wrapper rounded-3">
                                         <h2>Statistiche sui device utilizzati</h2>
@@ -226,9 +284,9 @@ const Dashboard = () => {
                                 </div>
                                 <div className="col-md-6">
                                     <div className="h-100 p-5 chart-wrapper rounded-3">
-                                        <h2>Add borders</h2>
+                                        <h2>Ultimi ordini</h2>
                                         <div className="chart-container container">
-                                            <BarChart chartData={lineChartData} />
+                                            <SimpleTable data={orders} />
                                         </div>
                                     </div>
                                 </div>

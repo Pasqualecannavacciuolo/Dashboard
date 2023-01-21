@@ -58,6 +58,10 @@ header, nav {
     border-radius: 5px;
 }
 
+.sidebar .nav-item .nav-link:hover {
+    background-color: #e6ecea;
+}
+
 .sidebar .nav-link {
     font-weight: 500;
     color: var(--text-color);
@@ -82,12 +86,18 @@ header, nav {
     font-size: .75rem;
 }
 
+.content {
+    margin-top: 18.5px !important;
+}
+
 .chart-wrapper {
     background-color: #f1f7f4;
 }
 
 .chart-container {
-    width: 500px;
+    display: inline-block;
+    position: relative;
+    width: 100%;
 }
 
 .line-chart {

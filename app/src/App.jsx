@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import logo from "./logo.svg";
 import Login from "./Login";
 import Dashboard from "./Dashboard";
+import OrderDetail from "./Pages/OrderDetail";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path='/' element={<Register />} />
         <Route path='login' element={<Login />} />
         <Route path='dashboard' element={<Dashboard />} />
+        <Route path="/order/:orderId" element={<OrderDetail />} />
       </Routes>
       
     </div>
