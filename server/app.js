@@ -83,7 +83,7 @@ app.post("/login", cors(corsOptions), async (req, res) => {
                     // Creo il token
                     jwt.sign(payload,
                         process.env.TOKEN_KEY,
-                        { expiresIn: "1m" },
+                        { expiresIn: "3h" },
                         (err, token) => {
                             if (err) {
                                 throw err;
