@@ -77,13 +77,13 @@ app.post("/login", cors(corsOptions), async (req, res) => {
                 if (isMatch) {
                     // Creo JWT payload
                     const payload = {
-                        id: results.rows[0].id,
+                        //id: results.rows[0].id,
                         username: results.rows[0].username
                     };
                     // Creo il token
                     jwt.sign(payload,
                         process.env.TOKEN_KEY,
-                        { expiresIn: 3600 },
+                        { expiresIn: "1m" },
                         (err, token) => {
                             if (err) {
                                 throw err;

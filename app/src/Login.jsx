@@ -4,7 +4,8 @@ import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-
+import { useJwt } from "react-jwt";
+import { isExpired, decodeToken } from "react-jwt";
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,23}$/;
@@ -68,18 +69,10 @@ const Login = () => {
             );
             // Se c'è un riscontro positivo setto il cookie
             if(response.status == 201) {
-                // Il cookie scadrà tra 15 secondi
-                var now = new Date();
-                var time = now.getTime();
-                var seconds = 15 * 1000;
-                var expireTime = time + seconds;
-                now.setTime(expireTime);
-
-                //console.log(response.data.token);
-                
-                // Setto access token con scadenza 15s
-                document.cookie = "token="+response.data.token+";path=/;expires="+now.toUTCString()+";secure" ;
-                
+                // Setto access token 
+                const decoded_token = decodeToken(response.data.token);
+                const expiration = new Date(decoded_token.exp*1000);
+                document.cookie = "token="+response.data.token+";path=/;expires="+expiration+";secure" ;
                 // Setto refresh token
                 //document.cookie = "Refreshtoken="+response.data.refresh_token+";path=/;secure" ;
                 
