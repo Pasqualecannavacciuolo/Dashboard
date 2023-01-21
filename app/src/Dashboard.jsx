@@ -56,7 +56,10 @@ const Dashboard = () => {
     const [loaded, setLoaded] = useState(false);
     const [time, setTime] = useState(new Date());
 
-    // Si verifica solo quando il componente viene caricato
+    /**
+     * Hook che permette di vedere lo spinner e controlla 
+     * se all'avvio del componente sono autenticato
+     */
     useEffect(() => {
         setTimeout(() => {
             setLoaded("true");
@@ -66,6 +69,9 @@ const Dashboard = () => {
 
     }, []);
 
+    /**
+     * Hook che controlla ogni 30 secondi se sono autenticato
+     */
     useEffect(() => {
         const interval = setInterval(() => {
             setTime(new Date());
@@ -116,6 +122,10 @@ const Dashboard = () => {
         ],
     });
 
+    /**
+     * Funzione che mi permette di eliminare dei cookie quando il token scade
+     * Al momento nei cookie ho solo il token
+     */
     const checkAuth = async () => {
         const token = Cookies.get("token");
         const token_is_expired = isExpired(token);
