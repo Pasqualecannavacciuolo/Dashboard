@@ -1,5 +1,7 @@
 import React from "react";
+import { useState, useEffect } from "react";
 
+import axios from "axios";
 
 import {
     Chart as ChartJS,
@@ -29,14 +31,14 @@ import PieChart from "../Components/Reusable/Charts/PieChart";
 import { UsersData } from "../utils/ChartData.js/UsersData";
 import { PlatformsData } from "../utils/ChartData.js/PlatformsData";
 
-import dashboard_icon from "./utils/img/dashboard.png";
-import orders_icon from "./utils/img/orders.png";
-import reports_icon from "./utils/img/reports.png";
-import products_icon from "./utils/img/products.png";
-import customers_icon from "./utils/img/customers.png";
-import integrations_icon from "./utils/img/integrations.png";
-import entrate_icon from "./utils/img/entrate.png";
-import perdite_icon from "./utils/img/perdite.png";
+import dashboard_icon from "../utils/img/dashboard.png";
+import orders_icon from "../utils/img/orders.png";
+import reports_icon from "../utils/img/reports.png";
+import products_icon from "../utils/img/products.png";
+import customers_icon from "../utils/img/customers.png";
+import integrations_icon from "../utils/img/integrations.png";
+import entrate_icon from "../utils/img/entrate.png";
+import perdite_icon from "../utils/img/perdite.png";
 
 
 const HomeDashboard = () => {
