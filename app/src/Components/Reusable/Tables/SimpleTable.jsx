@@ -1,3 +1,5 @@
+import './SimpleTable.css';
+
 import React from "react";
 
 import go_arrow from "../../../utils/img/go_arrow.png";
@@ -11,7 +13,7 @@ function SimpleTable({ data }) {
     items = items.slice(0,items.length/2);
 
     return (
-        <table className="table">
+        <table className="table table-borderless custom-table">
             <thead>
                 <tr>
                     <th scope="col">ID</th>
@@ -22,19 +24,19 @@ function SimpleTable({ data }) {
             </thead>
             <tbody>
                 {items.map((item) => (
-                <tr key = { item.id }>
-                    <th scope="row">{item.id}</th>
-                    <td>{item.title}</td>
-                    <td>{item.price}</td>
-                    <td>{item.category}</td>
-                    <td>
-                        <Link to={`order/${item.id}`}>
-                            <button className="btn">
-                                <img src={go_arrow} alt="go arrow" width="16" height="16" className="rounded-circle flex-shrink-0"></img>
-                            </button>
-                        </Link>
-                    </td>
-                </tr>
+                    <tr className='table-content align-middle' key={ item.id }>
+                        <th scope="row">{item.id}</th>
+                        <td>{item.title}</td>
+                        <td>{item.price}</td>
+                        <td>{item.category}</td>
+                        <td>
+                            <Link to={`order/${item.id}`}>
+                                <button className="btn">
+                                    <img src={go_arrow} alt="go arrow" width="16" height="16" className="rounded-circle flex-shrink-0"></img>
+                                </button>
+                            </Link>
+                        </td>
+                    </tr>
                 ))}
             </tbody>
         </table>

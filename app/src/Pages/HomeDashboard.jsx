@@ -102,7 +102,7 @@ const HomeDashboard = () => {
             <div className="content row align-items-md-stretch">
                 <div className="col-md-9">
                     <div className="h-100 p-5 chart-wrapper rounded-3">
-                        <h2>Statistiche sugli utenti</h2>
+                        <h2 className="mb-5">Statistiche sugli utenti</h2>
                         <div className="chart-container container">
                             <LineChart chartData={lineChartData} />
                         </div>
@@ -110,7 +110,7 @@ const HomeDashboard = () => {
                 </div>
                 <div className="col-md-3">
                     <div className="h-100 p-3 chart-wrapper rounded-3">
-                        <h2 className="mt-3 mb-3">Statistiche generali</h2>
+                        <h2 className="mt-4">Statistiche generali</h2>
                         <div className="list-group w-auto nav flex-column">
                             <a href="#" className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
                                 <img src={entrate_icon} alt="twbs" width="32" height="32" className="rounded-circle flex-shrink-0" />
@@ -152,7 +152,7 @@ const HomeDashboard = () => {
             <div className="row align-items-md-stretch mt-3">
                 <div className="col-md-6">
                     <div className="h-100 p-5 chart-wrapper rounded-3">
-                        <h2>Statistiche sui device utilizzati</h2>
+                        <h2 className="mb-5">Statistiche sui device utilizzati</h2>
                         <div className="chart-container container">
                             <PieChart chartData={pieChartData} />
                         </div>
@@ -160,7 +160,7 @@ const HomeDashboard = () => {
                 </div>
                 <div className="col-md-6">
                     <div className="h-100 p-5 chart-wrapper rounded-3">
-                        <h2>Ultimi ordini</h2>
+                        <h2 className="mb-5">Ultimi ordini</h2>
                         <div className="chart-container container">
                             <SimpleTable data={orders} />
                         </div>
