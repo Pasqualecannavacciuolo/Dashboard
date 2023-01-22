@@ -9,13 +9,13 @@ export const UsersData = [
       id: 2,
       year: 2017,
       userGain: 45677,
-      userLost: 345
+      userLost: 12879
     },
     {
       id: 3,
       year: 2018,
       userGain: 78888,
-      userLost: 555
+      userLost: 4588
     },
     {
       id: 4,
@@ -27,7 +27,7 @@ export const UsersData = [
       id: 5,
       year: 2020,
       userGain: 4300,
-      userLost: 234
+      userLost: 20777
     },
     {
       id: 6,

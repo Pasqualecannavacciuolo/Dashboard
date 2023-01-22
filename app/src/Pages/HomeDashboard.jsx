@@ -29,6 +29,7 @@ ChartJS.register(
 import SimpleTable from "../Components/Reusable/Tables/SimpleTable";
 import LineChart from "../Components/Reusable/Charts/LineChart";
 import PieChart from "../Components/Reusable/Charts/PieChart";
+import BarChart from "../Components/Reusable/Charts/BarChart";
 
 import { UsersData } from "../utils/ChartData.js/UsersData";
 import { PlatformsData } from "../utils/ChartData.js/PlatformsData";
@@ -55,7 +56,7 @@ const HomeDashboard = () => {
                     "#0E79B2"
                 ],
                 borderColor: "#0E79B2",
-                borderWidth: 1,
+                borderWidth: 5,
             },
             {
                 label: "Utenti persi",
@@ -64,7 +65,7 @@ const HomeDashboard = () => {
                     "#F39237"
                 ],
                 borderColor: "#F39237",
-                borderWidth: 1,
+                borderWidth: 5,
             },
         ],
     });
@@ -76,13 +77,34 @@ const HomeDashboard = () => {
                 label: "Numero utenti che utilizzano",
                 data: PlatformsData.map((data) => data.number),
                 backgroundColor: [
-                    "#0E79B2",
-                    "#F39237",
-                    "#BF1363"
+                    "#222",
+                    "#A6B1BF",
+                    "#BCC8D8"
                 ],
                 //borderColor: "#00AB84",
                 borderWidth: 1,
             }
+        ],
+    });
+
+    const [barChartData, setBarChartData] = useState({
+        labels: UsersData.map((data) => data.year),
+        datasets: [
+            {
+                label: "Utenti ottenuti",
+                data: UsersData.map((data) => data.userGain),
+                backgroundColor: [
+                    "#222"
+                ],
+            },
+            {
+                label: "Utenti persi",
+                data: UsersData.map((data) => data.userLost),
+                backgroundColor: [
+                    "#A6B1BF"
+                ],
+                
+            },
         ],
     });
 
@@ -106,7 +128,7 @@ const HomeDashboard = () => {
                     <div className="h-100 p-5 chart-wrapper rounded-3">
                         <h2 className="mb-5">Statistiche sugli utenti</h2>
                         <div className="chart-container container">
-                            <LineChart chartData={lineChartData} />
+                            <BarChart chartData={barChartData} />
                         </div>
                     </div>
                 </div>

@@ -24,10 +24,13 @@ code {
 
 :root {
   --text-color: #222;
-  --bg-color: #E8E8E8;
-  --primary-color: #000;
-  --secondary-color: #F6F7FB;
-  --accent-color: #e6e7eb;
+  /*--bg-color: #E8E8E8;*/
+  --bg-color: #F6FCFF;
+  --primary-color: #222;
+  /*--secondary-color: #F6F7FB;*/
+  --secondary-color: #F0F6FB;
+  /*--accent-color: #e6e7eb;*/
+  --accent-color: #e4eaef;
 }
 
 .cls-blue {

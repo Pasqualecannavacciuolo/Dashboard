@@ -20,6 +20,17 @@
     z-index: 1;
 }
 
+header {
+    box-shadow:
+  0px 0.3px 0.5px rgba(0, 0, 0, 0.02),
+  0px 0.8px 1.3px rgba(0, 0, 0, 0.028),
+  0px 1.5px 2.4px rgba(0, 0, 0, 0.035),
+  0px 2.7px 4.2px rgba(0, 0, 0, 0.042),
+  0px 5px 7.9px rgba(0, 0, 0, 0.05),
+  0px 12px 19px rgba(0, 0, 0, 0.07)
+;
+}
+
 header, nav {
     background-color: var(--primary-color);
 }
