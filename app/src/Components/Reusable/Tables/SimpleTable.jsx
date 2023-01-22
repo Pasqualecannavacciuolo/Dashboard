@@ -10,12 +10,8 @@ function SimpleTable({ data }) {
     
     items = items.slice(0,items.length/2);
 
-    const handleClick = (id) => {
-        
-    }
-
     return (
-        <table class="table">
+        <table className="table">
             <thead>
                 <tr>
                     <th scope="col">ID</th>
@@ -32,10 +28,10 @@ function SimpleTable({ data }) {
                     <td>{item.price}</td>
                     <td>{item.category}</td>
                     <td>
-                        <Link to={`/order/${item.id}`}>
-                        <button className="btn" onClick={()=>handleClick(item.id)}>
-                            <img src={go_arrow} alt="go arrow" width="16" height="16" className="rounded-circle flex-shrink-0"></img>
-                        </button>
+                        <Link to={`order/${item.id}`}>
+                            <button className="btn">
+                                <img src={go_arrow} alt="go arrow" width="16" height="16" className="rounded-circle flex-shrink-0"></img>
+                            </button>
                         </Link>
                     </td>
                 </tr>
