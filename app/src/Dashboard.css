@@ -30,7 +30,7 @@ header, nav {
 
 .sidebar {
     /*position: fixed;*/
-    background-color: var(--bg-color);
+    background-color: var(--secondary-color);
     top: 0;
     bottom: 0;
     left: 0;
@@ -52,14 +52,14 @@ header, nav {
 }
 
 .sidebar .nav-item .nav-link {
-    background-color: #f1f7f4;
+    background-color: var(--secondary-color);
     padding: 13px;
     margin: 3px;
     border-radius: 5px;
 }
 
 .sidebar .nav-item .nav-link:hover {
-    background-color: #e6ecea;
+    background-color: var(--accent-color);
 }
 
 .sidebar .nav-link {
@@ -91,7 +91,7 @@ header, nav {
 }
 
 .chart-wrapper {
-    background-color: #f1f7f4;
+    background-color: var(--secondary-color);
 }
 
 .chart-container {

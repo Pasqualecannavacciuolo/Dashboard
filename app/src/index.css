@@ -14,12 +14,20 @@ code {
     monospace;
 }
 
-:root {
+/*:root {
   --text-color: #191923;
   --bg-color: #FBFEF9;
   --primary-color: #0E79B2;
   --secondary-color: #F39237;
   --accent-color: #BF1363;
+}*/
+
+:root {
+  --text-color: #222;
+  --bg-color: #E8E8E8;
+  --primary-color: #000;
+  --secondary-color: #F6F7FB;
+  --accent-color: #e6e7eb;
 }
 
 .cls-blue {

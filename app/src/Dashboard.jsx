@@ -97,7 +97,7 @@ const Dashboard = () => {
                 </header>
                 <div className="container-fluid">
                     <div className="row">
-                        <nav id="sidebarMenu" className="px-md-4 mt-3 col-md-3 col-lg-2 d-md-block sidebar collapse">
+                        <nav id="sidebarMenu" className="px-md-4 pt-3 col-md-3 col-lg-2 d-md-block sidebar collapse">
                             <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 ">
                                 <h1 className="ps-1 h2">Menu</h1>
                             </div>
@@ -145,9 +145,7 @@ const Dashboard = () => {
                         </nav>
 
                         <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-3">
-                            <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 ">
-                                <h1 className="h2">Dashboard</h1>
-                            </div>
+                            
 
 
                             <Outlet />
