@@ -5,28 +5,28 @@ import { useState, useEffect } from "react";
 
 import axios from "axios";
 
-import SimpleTable from "../Components/Reusable/Tables/SimpleTable";
+import SimpleTable from "../../Components/Reusable/Tables/SimpleTable";
 
 
-import ApexBarChart from "../Components/Reusable/Charts/ApexCharts/BarChart";
-import ApexAreaChart from "../Components/Reusable/Charts/ApexCharts/AreaChart";
-import ApexDonutChart from "../Components/Reusable/Charts/ApexCharts/DonutChart";
+import ApexBarChart from "../../Components/Reusable/Charts/ApexCharts/BarChart";
+import ApexAreaChart from "../../Components/Reusable/Charts/ApexCharts/AreaChart";
+import ApexDonutChart from "../../Components/Reusable/Charts/ApexCharts/DonutChart";
 
 
-import { FacebookData } from "../utils/ChartData.js/FacebookData";
-import { InstagramData } from "../utils/ChartData.js/InstagramData";
-import { TwitterData } from "../utils/ChartData.js/TwitterData";
-import { UsersData } from "../utils/ChartData.js/UsersData";
-import { PlatformsData } from "../utils/ChartData.js/PlatformsData";
+import { FacebookData } from "../../utils/ChartData.js/FacebookData";
+import { InstagramData } from "../../utils/ChartData.js/InstagramData";
+import { TwitterData } from "../../utils/ChartData.js/TwitterData";
+import { UsersData } from "../../utils/ChartData.js/UsersData";
+import { PlatformsData } from "../../utils/ChartData.js/PlatformsData";
 
 
-import customers_icon from "../utils/img/customers.png";
-import products_icon from "../utils/img/products.png";
-import entrate_icon from "../utils/img/entrate.png";
-import perdite_icon from "../utils/img/perdite.png";
-import facebook_icon from "../utils/img/facebook.png";
-import instagram_icon from "../utils/img/instagram.png";
-import twitter_icon from "../utils/img/twitter.png";
+import customers_icon from "../../utils/img/customers.png";
+import products_icon from "../../utils/img/products.png";
+import entrate_icon from "../../utils/img/entrate.png";
+import perdite_icon from "../../utils/img/perdite.png";
+import facebook_icon from "../../utils/img/facebook.png";
+import instagram_icon from "../../utils/img/instagram.png";
+import twitter_icon from "../../utils/img/twitter.png";
 
 
 const HomeDashboard = () => {

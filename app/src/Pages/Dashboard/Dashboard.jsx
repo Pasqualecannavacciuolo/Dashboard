@@ -13,12 +13,12 @@ import Cookies from 'js-cookie';
 import RingLoader from "react-spinners/RingLoader";
 
 
-import dashboard_icon from "./utils/img/dashboard.png";
-import orders_icon from "./utils/img/orders.png";
-import reports_icon from "./utils/img/reports.png";
-import products_icon from "./utils/img/products.png";
-import customers_icon from "./utils/img/customers.png";
-import integrations_icon from "./utils/img/integrations.png";
+import dashboard_icon from "../../utils/img/dashboard.png";
+import orders_icon from "../../utils/img/orders.png";
+import reports_icon from "../../utils/img/reports.png";
+import products_icon from "../../utils/img/products.png";
+import customers_icon from "../../utils/img/customers.png";
+import integrations_icon from "../../utils/img/integrations.png";
 
 
 const Dashboard = () => {

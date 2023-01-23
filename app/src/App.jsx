@@ -2,12 +2,12 @@ import "./App.css";
 
 import { Route, Routes } from "react-router-dom";
 
-import Register from "./Register";
-import Login from "./Login";
-import Dashboard from "./Dashboard";
+import Register from "./pages/Register/Register";
+import Login from "./pages/Login/Login";
+import Dashboard from "./pages/Dashboard/Dashboard";
 import OrderDetail from "./pages/OrderDetail";
-import HomeDashboard from "./pages/HomeDashboard";
-import ScrollToTop from "./ScrollToTop";
+import HomeDashboard from "./pages/Dashboard/HomeDashboard";
+import ScrollToTop from "./utils/ScrollToTop";
 
 
 function App() {
