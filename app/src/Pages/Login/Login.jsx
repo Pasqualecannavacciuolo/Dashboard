@@ -84,7 +84,6 @@ const Login = () => {
                 //clear state and controlled inputs
                 setUser('');
                 setPwd('');
-                setMatchPwd('');
             }
             
         } catch (err) {
