@@ -71,7 +71,7 @@ const Register = () => {
         //setSuccess(true);
         
         try {
-            const response = await axios.post('https://dashboard-backend-la3z.onrender.com:10000/register',
+            const response = await axios.post('https://dashboard-backend-la3z.onrender.com/register',
                 JSON.stringify({ user, pwd }),
                 {
                     headers: { 'Content-Type': 'application/json' },
