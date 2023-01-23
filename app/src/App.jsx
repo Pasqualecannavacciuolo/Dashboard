@@ -5,7 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
 import Dashboard from "./pages/Dashboard/Dashboard";
-import OrderDetail from "../src/pages/OrderDetail/OrderDetail";
+import OrderDetail from "./pages/OrderDetail/OrderDetail";
 import HomeDashboard from "./pages/Dashboard/HomeDashboard";
 import ScrollToTop from "./utils/ScrollToTop";
 
