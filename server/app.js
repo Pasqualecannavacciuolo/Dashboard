@@ -8,7 +8,7 @@ const jwt = require("jsonwebtoken");
 const app = express();
 
 const corsOptions = {
-    origin: ['http://localhost:3000', 'https://dashboarbackend-4nc060dwj-pasqualecannavacciuolo.vercel.app/'],
+    origin: '*',
     optionsSuccessStatus: 200,
     credentials: true
 }
