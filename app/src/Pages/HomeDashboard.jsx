@@ -31,6 +31,14 @@ import LineChart from "../Components/Reusable/Charts/LineChart";
 import PieChart from "../Components/Reusable/Charts/PieChart";
 import BarChart from "../Components/Reusable/Charts/BarChart";
 
+import ApexBarChart from "../Components/Reusable/Charts/ApexCharts/BarChart";
+import ApexAreaChart from "../Components/Reusable/Charts/ApexCharts/AreaChart";
+import ApexDonutChart from "../Components/Reusable/Charts/ApexCharts/DonutChart";
+
+
+import { FacebookData } from "../utils/ChartData.js/FacebookData";
+import { InstagramData } from "../utils/ChartData.js/InstagramData";
+import { TwitterData } from "../utils/ChartData.js/TwitterData";
 import { UsersData } from "../utils/ChartData.js/UsersData";
 import { PlatformsData } from "../utils/ChartData.js/PlatformsData";
 
@@ -42,31 +50,55 @@ import customers_icon from "../utils/img/customers.png";
 import integrations_icon from "../utils/img/integrations.png";
 import entrate_icon from "../utils/img/entrate.png";
 import perdite_icon from "../utils/img/perdite.png";
+import facebook_icon from "../utils/img/facebook.png";
+import instagram_icon from "../utils/img/instagram.png";
+import twitter_icon from "../utils/img/twitter.png";
 
 
 const HomeDashboard = () => {
 
-    const [lineChartData, setLineChartData] = useState({
-        labels: UsersData.map((data) => data.year),
+    const [FblineChartData, setFbLineChartData] = useState({
+        labels: FacebookData.map((data) => data.anno),
         datasets: [
             {
-                label: "Utenti ottenuti",
-                data: UsersData.map((data) => data.userGain),
+                label: "Followers",
+                data: FacebookData.map((data) => data.followers),
                 backgroundColor: [
-                    "#0E79B2"
+                    "#222"
                 ],
-                borderColor: "#0E79B2",
-                borderWidth: 5,
-            },
+                borderColor: "#222",
+                borderWidth: 3,
+            }
+        ],
+    });
+
+    const [IglineChartData, setIgLineChartData] = useState({
+        labels: InstagramData.map((data) => data.anno),
+        datasets: [
             {
-                label: "Utenti persi",
-                data: UsersData.map((data) => data.userLost),
+                label: "Followers",
+                data: InstagramData.map((data) => data.followers),
                 backgroundColor: [
-                    "#F39237"
+                    "#222"
                 ],
-                borderColor: "#F39237",
-                borderWidth: 5,
-            },
+                borderColor: "#222",
+                borderWidth: 3,
+            }
+        ],
+    });
+
+    const [TwlineChartData, setTwLineChartData] = useState({
+        labels: TwitterData.map((data) => data.anno),
+        datasets: [
+            {
+                label: "Followers",
+                data: TwitterData.map((data) => data.followers),
+                backgroundColor: [
+                    "#222"
+                ],
+                borderColor: "#222",
+                borderWidth: 3,
+            }
         ],
     });
 
@@ -77,12 +109,12 @@ const HomeDashboard = () => {
                 label: "Numero utenti che utilizzano",
                 data: PlatformsData.map((data) => data.number),
                 backgroundColor: [
-                    "#222",
-                    "#A6B1BF",
-                    "#BCC8D8"
+                    "#1A936F",
+                    "#EA638C",
+                    "#F6AE2D"
                 ],
-                //borderColor: "#00AB84",
-                borderWidth: 1,
+                borderColor: "#222",
+                borderWidth: 0.1,
             }
         ],
     });
@@ -94,16 +126,16 @@ const HomeDashboard = () => {
                 label: "Utenti ottenuti",
                 data: UsersData.map((data) => data.userGain),
                 backgroundColor: [
-                    "#222"
+                    "#1A936F"
                 ],
             },
             {
                 label: "Utenti persi",
                 data: UsersData.map((data) => data.userLost),
                 backgroundColor: [
-                    "#A6B1BF"
+                    "#CA3C25"
                 ],
-                
+
             },
         ],
     });
@@ -123,12 +155,14 @@ const HomeDashboard = () => {
 
     return (
         <>
+
             <div className="row align-items-md-stretch mt-3">
+
                 <div className="col-md-9">
                     <div className="h-100 p-5 chart-wrapper rounded-3">
                         <h2 className="mb-5">Statistiche sugli utenti</h2>
                         <div className="chart-container container">
-                            <BarChart chartData={barChartData} />
+                            <ApexBarChart chartData={UsersData} />
                         </div>
                     </div>
                 </div>
@@ -173,24 +207,56 @@ const HomeDashboard = () => {
                 </div >
             </div >
 
-    <div className="row align-items-md-stretch mt-3">
-        <div className="col-md-6">
-            <div className="h-100 p-5 chart-wrapper rounded-3">
-                <h2 className="mb-5">Statistiche sui device utilizzati</h2>
-                <div className="chart-container container">
-                    <PieChart chartData={pieChartData} />
+            <div className="start-charts-wrapper row mt-3">
+                <div className="col chart-wrapper p-3">
+
+                    <div className="card-header">
+                        <span className="d-inline-block align-middle">
+                            <img  width={32} height={32} src={facebook_icon} ></img>
+                        </span>
+                        <span className="d-inline-block align-middle fs-4">Followers di Facebook</span>
+                    </div>
+                    <ApexAreaChart chartData={FblineChartData} color="#226CE0"/>
+
+                </div>
+                <div className="col chart-wrapper  p-3">
+                    <div className="card-header">
+                        <span className="d-inline-block align-middle">
+                            <img  width={32} height={32} src={instagram_icon} ></img>
+                        </span>
+                        <span className="d-inline-block align-middle fs-4">Followers di Instagram</span>
+                    </div>
+                    <ApexAreaChart chartData={IglineChartData} color="#EA638C"/>
+                </div>
+                <div className="col chart-wrapper p-3">
+                    <div className="card-header">
+                        <span className="d-inline-block align-middle">
+                            <img  width={32} height={32} src={twitter_icon} ></img>
+                        </span>
+                        <span className="d-inline-block align-middle fs-4">Followers di Twitter</span>
+                    </div>
+                    <ApexAreaChart chartData={TwlineChartData} color="#2297E0"/>
                 </div>
             </div>
-        </div>
-        <div className="col-md-6">
-            <div className="h-100 p-5 chart-wrapper rounded-3">
-                <h2 className="mb-5">Ultimi ordini</h2>
-                <div className="chart-container container">
-                    <SimpleTable data={orders} />
+
+            <div className="row align-items-md-stretch mt-3">
+                <div className="col-md-6">
+                    <div className="h-100 p-5 chart-wrapper rounded-3">
+                        <h2 className="mb-5">Statistiche sui device utilizzati</h2>
+                        <div className="chart-container container">
+                            <ApexDonutChart chartData={pieChartData}/>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-md-6">
+                    <div className="h-100 p-5 chart-wrapper rounded-3">
+                        <h2 className="mb-5">Ultimi ordini</h2>
+                        <div className="chart-container container">
+                            <SimpleTable data={orders} />
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
         </>
     );
 }
