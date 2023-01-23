@@ -5,32 +5,6 @@ import { useState, useEffect } from "react";
 
 import axios from "axios";
 
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend,
-} from 'chart.js';
-
-ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend
-);
-
-import SimpleTable from "../Components/Reusable/Tables/SimpleTable";
-import LineChart from "../Components/Reusable/Charts/LineChart";
-import PieChart from "../Components/Reusable/Charts/PieChart";
-import BarChart from "../Components/Reusable/Charts/BarChart";
-
 import ApexBarChart from "../Components/Reusable/Charts/ApexCharts/BarChart";
 import ApexAreaChart from "../Components/Reusable/Charts/ApexCharts/AreaChart";
 import ApexDonutChart from "../Components/Reusable/Charts/ApexCharts/DonutChart";
