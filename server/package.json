@@ -7,6 +7,7 @@
     "node": "16.x"
   },
   "scripts": {
+    "build": "esbuild app.js --bundle --platform=node --outfile=out.js",
     "start": "node index.js",
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,6 +20,7 @@
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
+    "esbuild": "0.17.4",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
     "pg": "^8.8.0"
