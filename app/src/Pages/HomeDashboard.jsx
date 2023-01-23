@@ -5,6 +5,9 @@ import { useState, useEffect } from "react";
 
 import axios from "axios";
 
+import SimpleTable from "../Components/Reusable/Tables/SimpleTable";
+
+
 import ApexBarChart from "../Components/Reusable/Charts/ApexCharts/BarChart";
 import ApexAreaChart from "../Components/Reusable/Charts/ApexCharts/AreaChart";
 import ApexDonutChart from "../Components/Reusable/Charts/ApexCharts/DonutChart";
