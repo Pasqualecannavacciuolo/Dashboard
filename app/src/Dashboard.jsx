@@ -19,8 +19,7 @@ import reports_icon from "./utils/img/reports.png";
 import products_icon from "./utils/img/products.png";
 import customers_icon from "./utils/img/customers.png";
 import integrations_icon from "./utils/img/integrations.png";
-import entrate_icon from "./utils/img/entrate.png";
-import perdite_icon from "./utils/img/perdite.png";
+
 
 const Dashboard = () => {
     const navigate = useNavigate();
