@@ -7,7 +7,6 @@
     "node": "16.x"
   },
   "scripts": {
-    "build": "esbuild index.js --bundle --target=node16 --packages=external --outfile=out.js",
     "start": "node index.js",
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
