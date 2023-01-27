@@ -35,9 +35,8 @@ const Dashboard = () => {
         setTimeout(() => {
             setLoaded("true");
         }, 3000);
-        
         checkAuth();
-    }, []);
+    });
 
     /**
      * Hook che controlla ogni 30 secondi se sono autenticato
@@ -49,7 +48,7 @@ const Dashboard = () => {
         }, 30000);
 
         return () => clearInterval(interval);
-    }, []);
+    });
 
     
 

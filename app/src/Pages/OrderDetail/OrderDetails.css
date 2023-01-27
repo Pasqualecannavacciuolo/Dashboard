@@ -1,0 +1,88 @@
+.order-wrapper-child {
+    width: 25%;
+    
+    padding: 27px;
+    border-radius: 7px;
+}
+
+.client {
+    padding: 13px;
+    border-radius: 7px;
+    background-color: #fefefe;
+}
+
+
+
+.box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 13px;
+    border-radius: 7px;
+    background-color: #fefefe;
+}
+
+.child {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    
+    margin: 7px 0;
+}
+
+.child-element {
+    width: 90%;
+    height: fit-content;
+}
+
+.dot-line-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.dot-line-wrapper .line img{
+    width: 64px;
+}
+
+.dot-line-wrapper .spacer {
+    width: 64px;
+}
+
+.accordion-button {
+    margin: 0 1px;
+    padding: 0;
+}
+
+.accordion-button:not(.collapsed) {
+    /*color: #3E78B2;*/
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+.accordion-button::after {
+    margin-left: 9px;
+}
+
+.list-group-item-check {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+}
+
+.pe-none {
+    pointer-events: none!important;
+}
+
+.list-group-item-check:checked + .list-group-item {
+    color: #fff;
+    background-color: var(--bs-blue);
+}
+
+.list-group-checkable .list-group-item {
+    cursor: pointer;
+}

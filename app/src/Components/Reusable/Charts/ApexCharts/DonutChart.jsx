@@ -1,3 +1,5 @@
+import "./css/DonutChart.css";
+
 import React, { Component } from "react";
 import Chart from "react-apexcharts";
 
@@ -11,7 +13,10 @@ class ApeDonutChart extends Component {
         chart: {
           id: "basic-donut"
         },
-        labels: props.chartData.labels
+        labels: props.chartData.labels,
+        legend: {
+          position: 'right'
+        }
       },
       series: props.chartData.datasets[0].data.map(data => data)
     };

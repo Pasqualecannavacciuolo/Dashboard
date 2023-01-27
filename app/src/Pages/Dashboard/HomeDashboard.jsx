@@ -116,9 +116,9 @@ const HomeDashboard = () => {
 
     const [orders, setOrders] = useState([]);
     const loadData = async () => {
-        axios.get('https://dummyjson.com/products')
+        axios.get('https://dummyjson.com/carts')
             .then(response => {
-                setOrders(response.data.products);
+                setOrders(response.data.carts);
             });
     }
 
