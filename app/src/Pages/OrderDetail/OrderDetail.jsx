@@ -61,10 +61,9 @@ const OrderDetail = () => {
             // Setto come attivo lo stato della spedizione in base all'url momentaneamente
             if(element_status_without_space === orderStatus) {
                 element.className="child-element status";
-                console.log(element.className)
             }
         });
-    }, [orderId]);
+    }, [orderId, orderStatus]);
 
 
     // Navigo alla paginad el prodotto
@@ -115,7 +114,7 @@ const OrderDetail = () => {
 
                                                     <div key={item.id} className="list-group list-group-checkable d-grid gap-2 border-0 w-auto mt-1 mb-1">
                                                         <input className="list-group-item-check pe-none" onClick={handleClick} type="radio" name="listGroupCheckableRadios" id={item.id} value={item.id} />
-                                                        <label className="list-group-item rounded-3 py-3" htmlFor={item.title}>
+                                                        <label className="list-group-item rounded-3 py-3" htmlFor={item.id}>
                                                             {item.title}
                                                             <span className="d-block small opacity-50">{item.price}€</span>
                                                         </label>
