@@ -22,9 +22,16 @@ const OrderDetail = () => {
     const navigate = useNavigate();
 
     const { orderId } = useParams();
+    // Momentaneo con il DB non potrà essere manipolato
+    const { orderStatus } = useParams();
+    
     const [order, setOrder] = useState({});
     const [cartContent, setCartContent] = useState([{}]);
+    const [cartTotal, setCartTotal] = useState(0);
 
+    
+
+    // Ottengo i dati del carrello
     useEffect(() => {
         const getData = async () => {
             try {
@@ -34,14 +41,32 @@ const OrderDetail = () => {
                 setOrder(object);
                 setCartContent(object.products)
 
+                let somma = 0;
+                object.products.forEach(element => {
+                    somma = somma+element.price;
+                    setCartTotal(somma);
+                });
+
             } catch (err) {
                 console.log(err);
             }
         }
         getData();
+        const shipping_timeline_elements = document.getElementsByClassName("child-element")
+        const array = [...shipping_timeline_elements];
+        array.forEach(element => {
+            const element_status = element.className.split("child-element").pop();
+            const element_status_without_space = element_status.trim()
+           
+            if(element_status_without_space === orderStatus) {
+                element.className="child-element status";
+                console.log(element.className)
+            }
+        });
     }, [orderId]);
 
 
+    // Navigo alla paginad el prodotto
     const handleClick = (e) => {
         navigate('/dashboard/product/'+e.target.value);
     }
@@ -85,17 +110,17 @@ const OrderDetail = () => {
                                         </h2>
                                         <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                             <div className="accordion-body">
-                                            {cartContent.map((item) => (
-                                                
+                                                {cartContent.map((item) => (
+
                                                     <div key={item.id} className="list-group list-group-checkable d-grid gap-2 border-0 w-auto mt-1 mb-1">
                                                         <input className="list-group-item-check pe-none" onClick={handleClick} type="radio" name="listGroupCheckableRadios" id={item.id} value={item.id} />
-                                                        <label className="list-group-item rounded-3 py-3" for={item.id}>
-                                                            {item.id}
-                                                            <span className="d-block small opacity-50">With support text underneath to add more detail</span>
+                                                        <label className="list-group-item rounded-3 py-3" htmlFor={item.title}>
+                                                            {item.title}
+                                                            <span className="d-block small opacity-50">{item.price}€</span>
                                                         </label>
                                                     </div>
-                                                
-                                            ))}
+
+                                                ))}
                                             </div>
                                         </div>
                                     </div>
@@ -106,7 +131,7 @@ const OrderDetail = () => {
                                 <span className="d-inline-block align-middle">
                                     <img width={32} height={32} src={euro} alt="id"></img>
                                 </span>
-                                <span className="d-inline-block align-middle">Prezzo: {order.total}€</span>
+                                <span className="d-inline-block align-middle">Totale: {cartTotal}€</span>
                             </div>
                             <div className="mt-3 mb-3">
                                 <span className="d-inline-block align-middle">

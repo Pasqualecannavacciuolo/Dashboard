@@ -33,6 +33,12 @@
 .child-element {
     width: 90%;
     height: fit-content;
+    padding: 7px;
+    border-radius: 6px;
+}
+
+.status {
+    background-color: var(--accent-color);
 }
 
 .dot-line-wrapper {

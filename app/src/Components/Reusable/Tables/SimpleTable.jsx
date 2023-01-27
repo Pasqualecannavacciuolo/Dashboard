@@ -12,6 +12,7 @@ function SimpleTable({ data }) {
 
     const shippedStatus = ["ricevuto", "pagato", "spedito", "consegnato"];
 
+    // Ottengo uno status dell'ordine randomico in base all'array sopra definito
     function getRandomItem(arr) {
         // get random index value
         const randomIndex = Math.floor(Math.random() * arr.length);
@@ -25,6 +26,7 @@ function SimpleTable({ data }) {
     
     items = items.slice(0,items.length/2);
 
+    // Creo l'eleemnto per indicare lo status dell'ordine
     function setShippedStatus() {
         const status = getRandomItem(shippedStatus);
          
@@ -53,11 +55,13 @@ function SimpleTable({ data }) {
         return element;
     }
 
-    function handleClick(e, id) {
+    // Vado alla pagine dell'ordine
+    function handleClick(e, id, status) {
         e.preventDefault();
-        navigate('/dashboard/order/'+id);
+        navigate('/dashboard/order/'+id+"/"+status);
     }
 
+    // Creo il table body
     function createTableBody() {
 
         const father = document.getElementById('father')
@@ -83,7 +87,7 @@ function SimpleTable({ data }) {
             const td_link = document.createElement("td");
             const td_link_button = document.createElement("button");
             td_link_button.className = "btn";
-            td_link_button.onclick = (e => handleClick(e, item.id));
+            td_link_button.onclick = (e => handleClick(e, item.id, element.innerHTML));
             const td_link_btn_img = document.createElement("img");
             td_link_btn_img.className = "rounded-circle flex-shrink-0";
             td_link_btn_img.src = go_arrow;
