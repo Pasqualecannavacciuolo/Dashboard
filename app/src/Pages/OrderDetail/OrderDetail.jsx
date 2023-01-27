@@ -58,6 +58,7 @@ const OrderDetail = () => {
             const element_status = element.className.split("child-element").pop();
             const element_status_without_space = element_status.trim()
            
+            // Setto come attivo lo stato della spedizione in base all'url momentaneamente
             if(element_status_without_space === orderStatus) {
                 element.className="child-element status";
                 console.log(element.className)
