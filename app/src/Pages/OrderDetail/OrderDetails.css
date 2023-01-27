@@ -1,13 +1,24 @@
+.order-wrapper {
+    min-height: 95vh;
+}
+
 .order-wrapper-child {
     width: 25%;
-    
     padding: 27px;
-    border-radius: 7px;
+    border-radius: 13px;
+    box-shadow:
+  0px 0px 41.4px -60px rgba(0, 0, 0, 0.07),
+  0px 0px 103.8px -60px rgba(0, 0, 0, 0.056),
+  0px 0px 110.4px -60px rgba(0, 0, 0, 0.054),
+  0px 0px 106.9px -60px rgba(0, 0, 0, 0.053),
+  0px 0px 101px -60px rgba(0, 0, 0, 0.045),
+  0px 0px 94px -60px rgba(0, 0, 0, 0.027)
+;
 }
 
 .client {
     padding: 13px;
-    border-radius: 7px;
+    border-radius: 13px;
     background-color: #fefefe;
 }
 
@@ -33,12 +44,19 @@
 .child-element {
     width: 90%;
     height: fit-content;
-    padding: 7px;
+    padding: 13px;
     border-radius: 6px;
 }
 
 .status {
-    background-color: var(--accent-color);
+    background-color: var(--secondary-color);
+    box-shadow:
+            1.7px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+            4.2px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+            7.9px 12.5px 10px rgba(0, 0, 0, 0.035),
+            14.1px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+            26.3px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+            63px 100px 80px rgba(0, 0, 0, 0.07);
 }
 
 .dot-line-wrapper {
