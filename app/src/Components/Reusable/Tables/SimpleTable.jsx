@@ -33,19 +33,19 @@ function SimpleTable({ data }) {
         // eslint-disable-next-line default-case
         switch(status){
             case "ricevuto": 
-                element.className = "badge text-bg-secondary";
+                element.className = "w-100 badge text-bg-secondary";
                 element.innerHTML = status;
                 break;
             case "pagato": 
-                element.className = "badge text-bg-primary";
+                element.className = "w-100 badge text-bg-primary";
                 element.innerHTML = status;
                 break;
             case "spedito": 
-                element.className = "badge text-bg-warning";
+                element.className = "w-100 badge text-bg-warning";
                 element.innerHTML = status;
                 break;
             case "consegnato": 
-                element.className = "badge text-bg-success";
+                element.className = "w-100 badge text-bg-success";
                 element.innerHTML = status;
                 break;
         }
