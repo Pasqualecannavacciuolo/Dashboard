@@ -76,7 +76,7 @@ const Dashboard = () => {
             {loaded === false &&
                 <div className="spinner-wrapper">
                     <RingLoader
-                        color="#0E79B2"
+                        color="#222"
                         loading
                         size={200}
                     />
