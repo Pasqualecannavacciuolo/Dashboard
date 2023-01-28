@@ -35,18 +35,25 @@ header, nav {
     background-color: var(--primary-color);
 }
 
-/*
-   * Sidebar
-   */
+/**
+* Sidebar
+**/
 
 .sidebar {
-    /*position: fixed;*/
     background-color: var(--secondary-color);
     top: 0;
     bottom: 0;
     left: 0;
     z-index: 100;
-    box-shadow: inset -1px 0 0 rgb(0 0 0 / 10%);
+    /*box-shadow: inset -1px 0 0 rgb(0 0 0 / 10%);*/
+    box-shadow:
+            1.7px 0px 4.5px rgba(0, 0, 0, 0.013),
+            3.9px 0px 10.4px rgba(0, 0, 0, 0.019),
+            7px 0px 18.7px rgba(0, 0, 0, 0.023),
+            11.6px 0px 31px rgba(0, 0, 0, 0.027),
+            19px 0px 51.1px rgba(0, 0, 0, 0.031),
+            33.3px 0px 89.2px rgba(0, 0, 0, 0.037),
+            72px 0px 193px rgba(0, 0, 0, 0.05);
 }
 
 @media (max-width: 767.98px) {
@@ -62,15 +69,23 @@ header, nav {
     /* Scrollable contents if viewport is shorter than content. */
 }
 
+
+
 .sidebar .nav-item .nav-link {
     background-color: var(--secondary-color);
     padding: 13px;
     margin: 3px;
-    border-radius: 5px;
+    border-radius: 9px;
+    box-shadow:
+  34.1px 7px 30px -18px rgba(0, 0, 0, 0.047),
+  40.8px 8.3px 174.6px -18px rgba(0, 0, 0, 0.049),
+  44px 9px 500px -18px rgba(0, 0, 0, 0.06)
+;
 }
 
 .sidebar .nav-item .nav-link:hover {
     background-color: var(--accent-color);
+    box-shadow: none;
 }
 
 .sidebar .nav-link {

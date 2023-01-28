@@ -73,7 +73,7 @@ const Dashboard = () => {
     return (
         
         <>
-            {loaded == false &&
+            {loaded === false &&
                 <div className="spinner-wrapper">
                     <RingLoader
                         color="#0E79B2"
@@ -95,12 +95,12 @@ const Dashboard = () => {
                 </header>
                 <div className="container-fluid">
                     <div className="row">
-                        <nav id="sidebarMenu" className="px-md-4 pt-3 col-md-3 col-lg-2 d-md-block sidebar collapse">
+                        <nav id="sidebarMenu" className="position-sticky sidebar-sticky px-md-4 pt-3 col-md-3 col-lg-2 d-md-block sidebar collapse">
                             <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 ">
                                 <h1 className="ps-1 h2">Menu</h1>
                             </div>
 
-                            <div className="position-sticky sidebar-sticky">
+                            <div>
                                 <ul className="nav flex-column">
                                     <li className="nav-item">
                                         <Link className="nav-link active" to={''}>
