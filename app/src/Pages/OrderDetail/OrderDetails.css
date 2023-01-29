@@ -1,25 +1,26 @@
 .order-wrapper {
     min-height: 95vh;
+    background-color: var(--secondary-color);
+    border: none;
 }
 
 .order-wrapper-child {
-    width: 25%;
+    width: 30%;
     padding: 27px;
     border-radius: 13px;
     box-shadow:
-  0px 0px 41.4px -60px rgba(0, 0, 0, 0.07),
-  0px 0px 103.8px -60px rgba(0, 0, 0, 0.056),
-  0px 0px 110.4px -60px rgba(0, 0, 0, 0.054),
-  0px 0px 106.9px -60px rgba(0, 0, 0, 0.053),
-  0px 0px 101px -60px rgba(0, 0, 0, 0.045),
-  0px 0px 94px -60px rgba(0, 0, 0, 0.027)
-;
+            0px 0px 41.4px -60px rgba(0, 0, 0, 0.07),
+            0px 0px 103.8px -60px rgba(0, 0, 0, 0.056),
+            0px 0px 110.4px -60px rgba(0, 0, 0, 0.054),
+            0px 0px 106.9px -60px rgba(0, 0, 0, 0.053),
+            0px 0px 101px -60px rgba(0, 0, 0, 0.045),
+            0px 0px 94px -60px rgba(0, 0, 0, 0.027);
 }
 
 .client {
     padding: 13px;
     border-radius: 13px;
-    background-color: #fefefe;
+    
 }
 
 
@@ -72,6 +73,10 @@
 
 .dot-line-wrapper .spacer {
     width: 64px;
+}
+
+.accordion {
+    --bs-accordion-bg: transparent !important;
 }
 
 .accordion-button {
