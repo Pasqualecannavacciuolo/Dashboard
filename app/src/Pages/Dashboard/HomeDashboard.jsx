@@ -133,7 +133,7 @@ const HomeDashboard = () => {
             <div className="row align-items-md-stretch mt-3">
 
                 <div className="col-md-9">
-                    <div className="h-100 p-5 chart-wrapper rounded-3">
+                    <div className="h-100 p-3 chart-wrapper rounded-3">
                         <h2 className="mb-5">Statistiche sugli utenti</h2>
                         <div className="chart-container container">
                             <ApexBarChart chartData={UsersData} />
@@ -182,7 +182,7 @@ const HomeDashboard = () => {
             </div >
 
             <div className="start-charts-wrapper row mt-3">
-                <div className="col chart-wrapper p-3">
+                <div className="col chart-wrapper p-3 rounded-3">
 
                     <div className="card-header">
                         <span className="d-inline-block align-middle">
@@ -193,7 +193,7 @@ const HomeDashboard = () => {
                     <ApexAreaChart chartData={FblineChartData} color="#226CE0"/>
 
                 </div>
-                <div className="col chart-wrapper  p-3">
+                <div className="col chart-wrapper  p-3 rounded-3 ">
                     <div className="card-header">
                         <span className="d-inline-block align-middle">
                             <img  width={32} height={32} src={instagram_icon} ></img>
@@ -202,7 +202,7 @@ const HomeDashboard = () => {
                     </div>
                     <ApexAreaChart chartData={IglineChartData} color="#EA638C"/>
                 </div>
-                <div className="col chart-wrapper p-3">
+                <div className="col chart-wrapper p-3 rounded-3">
                     <div className="card-header">
                         <span className="d-inline-block align-middle">
                             <img  width={32} height={32} src={twitter_icon} ></img>

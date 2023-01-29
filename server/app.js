@@ -9,7 +9,7 @@ const db = require("./queries");
 const Pool = require("pg").Pool
 const pool = new Pool({
   user: 'postgres',
-  host: '172.17.0.3',
+  host: '172.17.0.2',
   database: 'postgres',
   password: 'password123',
   port: 5432,

@@ -38,6 +38,7 @@ class ApexBarChart extends Component {
               series={this.state.series}
               type="bar"
               width="100%"
+              height="250px"
             />
           </div>
         </div>
