@@ -9,3 +9,7 @@ p {
     border: none;
 }
 
+.container {
+    background-color: var(--bg-color);
+    padding: 17px;
+}
