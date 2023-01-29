@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from "react";
+import React, { Component } from "react";
 import star_icon from "../../../utils/img/star.png";
 
 class StarRating extends Component {
@@ -7,16 +7,17 @@ class StarRating extends Component {
         super(props);
         
         this.state = {
-            rating: props.rating,
-            cont: 0
+            rating: props.rating
         }
     }
     componentDidMount() {
         this.renderStars();
+        
     }
     renderStars = () => {
+        const local_rating = this.props.rating;
         const rating_block = document.getElementById("rating-block");
-        for (let index = 0; index < this.state.rating; index++) {
+        for (let index = 0; index < local_rating; index++) {
             const star_element = document.createElement("img");
             star_element.id = index;
             star_element.src = star_icon;

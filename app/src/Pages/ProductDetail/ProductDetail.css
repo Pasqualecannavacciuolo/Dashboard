@@ -1,0 +1,11 @@
+p {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.product-wrapper {
+    min-height: 95vh;
+    background-color: var(--secondary-color);
+    border: none;
+}
+
