@@ -80,7 +80,7 @@ function BaseTable({ data }) {
     return (
         <table className="table table-borderless custom-table">
             <thead>
-                <tr>
+                <tr className='text-start'>
                     <th scope="col">ID</th>
                     <th scope="col">Titolo</th>
                     <th scope="col">Categoria</th>
@@ -88,7 +88,7 @@ function BaseTable({ data }) {
                     <th scope="col">Prezzo</th>
                 </tr>
             </thead>
-            <tbody id='father'>
+            <tbody id='father' className='text-start'>
                 {createTableBody()}
             </tbody>
         </table>

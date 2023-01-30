@@ -84,7 +84,7 @@ const ProductCreate = () => {
                         <label htmlFor="prezzo" className="form-label">Prezzo</label>
                         <input name="prezzo" type="text" className="form-control" id="prezzo" onChange={handleChangePrice} />
                     </div>
-                    <button type="submit" className="btn btn-primary">Crea</button>
+                    <button type="submit" className="btn button-success">Crea</button>
                 </form>
             </div>
         </>

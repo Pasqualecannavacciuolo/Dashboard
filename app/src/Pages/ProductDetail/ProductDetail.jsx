@@ -101,28 +101,9 @@ const ProductDetail = (props) => {
 
 
     return (
-        <div className="product-wrapper p-5 rounded-3">
         
-            <div className="container rounded-3">
-
-                <div className="d-flex gap-3 mb-5">
-                    <button className="btn btn-success">
-                        <span className="d-inline-block align-middle">
-                        <img src={salva_white} alt="modifica" width={32} height={32}></img>
-                        </span>
-                        <span className="ms-1 d-inline-block align-middle">Salva</span>
-                    </button>
-                    
-                    <button className="btn btn-danger">
-                        <span className="d-inline-block align-middle">
-                        <img src={elimina_white} alt="modifica" width={32} height={32}></img>
-                        </span>
-                        <span className="ms-1 d-inline-block align-middle">Elimina</span>
-                    </button>
-                </div>
-
-                
-
+            <div className="container rounded-3 m-5 p-5">
+                <h1 className="text-start display-1 mt-3 mb-3">Dettagli del prodotto</h1>
                 <div className="row text-start">
 
                     <div className="col">
@@ -146,13 +127,12 @@ const ProductDetail = (props) => {
                                 <label htmlFor="prezzo" className="form-label">Prezzo</label>
                                 <input name="prezzo" type="text" className="form-control" id="prezzo" onChange={handleChangePrice} defaultValue={price}/>
                             </div>
-                            <button type="submit" className="btn btn-primary">Aggiorna</button>
+                            <button type="submit" className="btn button-primary">Aggiorna</button>
                         </form>
                         
                     </div>
                 </div>
             </div>
-        </div>
     );
 }
 

@@ -31,6 +31,10 @@ code {
   --secondary-color: #F5F6F7;/*#F0F6FB*/
   /*--accent-color: #e6e7eb;*/
   --accent-color: #E0E3E6;/*#e4eaef*/
+  --btn-success: #1A936F;
+  --btn-success-hover: #188866;
+  --btn-primary: #1c67a4;
+  --btn-primary-hover: #195f98;
 }
 
 .cls-blue {
@@ -43,4 +47,24 @@ code {
 
 .cls-2 {
   fill: none;
+}
+
+.button-success {
+  background-color: var(--btn-success);
+  color: #fafafa;
+}
+
+.button-success:hover {
+  background-color: var(--btn-success-hover);
+  color: #fafafa;
+}
+
+.button-primary {
+  background-color: var(--btn-primary);
+  color: #fafafa;
+}
+
+.button-primary:hover {
+  background-color: var(--btn-primary-hover);
+  color: #fafafa;
 }
