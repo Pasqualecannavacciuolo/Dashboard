@@ -115,10 +115,10 @@ const Dashboard = () => {
                                         </a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="#">
+                                        <Link className="nav-link active" to={'/dashboard/products'}>
                                             <img src={products_icon} className="feather feather-file align-text-center me-2"></img>
                                             Prodotti
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className="nav-item">
                                         <a className="nav-link" href="#">

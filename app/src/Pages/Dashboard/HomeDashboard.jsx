@@ -116,10 +116,21 @@ const HomeDashboard = () => {
 
     const [orders, setOrders] = useState([]);
     const loadData = async () => {
+        
         axios.get('https://dummyjson.com/carts')
             .then(response => {
                 setOrders(response.data.carts);
             });
+        
+            /*try {
+                const response = await axios.get('http://localhost:4001/products');
+                const object = response;
+                setOrders(object.data);
+                console.log(object.data[0])                
+
+            } catch (err) {
+                console.log(err);
+            }*/
     }
 
     useEffect(() => {

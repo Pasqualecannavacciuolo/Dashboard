@@ -1,0 +1,16 @@
+.custom-table tbody tr th, .custom-table tbody tr {
+    border: none;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+td {
+    border: none;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.spacer {
+    background-color: transparent !important;
+    border: none;
+}

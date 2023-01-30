@@ -9,8 +9,8 @@ const db = require("./queries");
 const Pool = require("pg").Pool
 const pool = new Pool({
   user: 'postgres',
-  host: '172.17.0.2',
-  database: 'postgres',
+  host: 'localhost',
+  database: 'dashboard',
   password: 'password123',
   port: 5432,
 })
@@ -169,5 +169,50 @@ app.post("/login", cors(corsOptions), async (req, res) => {
     */
 });
 
+app.post("/product/create", cors(corsOptions), async (req, res) => {
+    try {
+
+        // Ottengo i dati dal form
+        const { title, category, description, price } = req.body;
+
+        // Aggiungo l'utente al Database
+        const product_obj = { title, category, description, price };
+        let result = db.createProduct(product_obj);
+
+        // Tutto è andato bene passo i dati nella RESPONSE
+        if (result == undefined) {
+            res.status(201).json({ title, category, description, price })
+        }
+
+        // C'è stato qualche problema nell'inserimento nel Database
+        if (result == 1) {
+            res.status(409);
+        }
+    
+    } catch (err) {
+        console.log(err);
+    }
+});
+
+app.get('/products', db.getProducts)
+
+app.get("/product/:productId", cors(corsOptions), async(req, res) => {
+        const productId = req.params;
+        
+        let result = await db.getProductById(productId);
+        //console.log("Result: ",result);
+        
+        // Tutto è andato bene passo i dati nella RESPONSE
+        if (result) {
+            res.status(201).json(result);
+        }
+
+        // C'è stato qualche problema nell'inserimento nel Database
+        if (!result) {
+            res.status(409);
+        }
+    
+    
+});
 
 module.exports = app;

@@ -9,6 +9,8 @@ import OrderDetail from "./Pages/OrderDetail/OrderDetail";
 import HomeDashboard from "./Pages/Dashboard/HomeDashboard";
 import ScrollToTop from "./utils/ScrollToTop";
 import ProductDetail from "./Pages/ProductDetail/ProductDetail";
+import Products from "./Pages/Products/Products";
+import ProductCreate from "./Pages/ProductCreate/ProductCreate";
 
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
               <Route index element={<HomeDashboard />} />
               <Route path="order/:orderId/:orderStatus" element={<OrderDetail />} />
               <Route path="product/:productId" element={<ProductDetail />} />
+              <Route path="products" element={<Products />} />
+              <Route path="product/create" element={<ProductCreate />} />
           </Route>
       </Routes>
       </ScrollToTop>

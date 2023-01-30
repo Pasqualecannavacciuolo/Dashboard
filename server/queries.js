@@ -1,15 +1,26 @@
 const bcrypt = require("bcryptjs");
+const { response } = require("express");
 
 const Pool = require("pg").Pool
 const pool = new Pool({
   user: 'postgres',
-  host: '172.17.0.2',
-  database: 'postgres',
+  host: 'localhost',
+  database: 'dashboard',
   password: 'password123',
   port: 5432,
-})
+});
+
 const getUsers = (request, response) => {
   pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).json(results.rows)
+  })
+}
+
+const getProducts = (request, response) => {
+  pool.query('SELECT * FROM products ORDER BY id ASC', (error, results) => {
     if (error) {
       throw error
     }
@@ -26,6 +37,14 @@ const getUserById = (request, response) => {
     }
     response.status(200).json(results.rows)
   })
+}
+
+const getProductById = async (productId, request, response) => {
+  const id = parseInt(productId.productId);
+  
+  const text = `SELECT * FROM products WHERE id = $1`;
+  const values = [id];
+  return (await pool.query(text, values)).rows;
 }
 
 const getUser = (request, response) => {
@@ -46,7 +65,25 @@ const getUser = (request, response) => {
       }
     });
   });
-  
+}
+
+const getProduct = (request, response) => {
+  //const {user, pwd} = request.body;
+  const title = request.body.title;
+  const category = request.body.category;
+
+  let product_obj;
+
+  return pool.query('SELECT title, category FROM products WHERE title = $1 AND category = $2', [title, category], (error, results) => {
+    if (error) {
+      throw error
+    }
+    product_obj = results.rows
+    
+    if(product_obj) {
+        response.status(200);
+    }
+  });
 }
 
 const createUser = (user) => {
@@ -59,6 +96,27 @@ const createUser = (user) => {
   }
 
   pool.query('INSERT INTO accounts (username, pwd) VALUES ($1, $2)', [username, encrypted_pwd], (error, results) => {
+    if (error) {
+      throw error
+    }
+  })
+}
+
+const createProduct = (product) => {
+  const title = product.title;
+  const category = product.category;
+  const description = product.description;
+  const price = product.price;
+
+  // Controllo che i dati ricevuti non siano vuoti
+  if((title == undefined || title == null || title == '') 
+  || (category == undefined || category == null || category == '') 
+  || (description == undefined || description == null || description == '') 
+  || (price == undefined || price == null || category == '')) {
+    return 1;
+  }
+
+  pool.query('INSERT INTO products (title, category, description, price) VALUES ($1, $2, $3, $4)', [title, category, description, price], (error, results) => {
     if (error) {
       throw error
     }
@@ -81,6 +139,22 @@ const updateUser = (request, response) => {
   )
 }
 
+const updateProduct = (request, response) => {
+  const id = parseInt(request.params.id)
+  const { title, category, description, price } = request.body
+
+  pool.query(
+    'UPDATE products SET title = $1, category = $2, description = $3, price = $4 WHERE id = $5',
+    [title, category, description, price, id],
+    (error, results) => {
+      if (error) {
+        throw error
+      }
+      response.status(200).send(`Product modified with ID: ${id}`)
+    }
+  )
+}
+
 const deleteUser = (request, response) => {
   const id = parseInt(request.params.id)
 
@@ -94,9 +168,14 @@ const deleteUser = (request, response) => {
 
 module.exports = {
   getUsers,
+  getProducts,
   getUser,
+  getProduct,
   getUserById,
+  getProductById,
   createUser,
+  createProduct,
   updateUser,
+  updateProduct,
   deleteUser,
 }
