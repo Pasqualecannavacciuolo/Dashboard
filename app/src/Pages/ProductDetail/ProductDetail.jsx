@@ -40,17 +40,6 @@ const ProductDetail = (props) => {
     };
 
     useEffect(() => {
-        /*
-        const getData = async () => {
-            try {
-                const response = await axios.get('https://dummyjson.com/products/' + productId);
-                const object = response.data;
-                setProduct(object);
-                setRating(Math.round(object.rating));
-            } catch (err) {
-                console.log(err);
-            }
-        }*/
         const getData = async () => {
             try {
                 const response = await axios.get('http://localhost:4001/product/'+productId);
@@ -75,21 +64,7 @@ const ProductDetail = (props) => {
         e.preventDefault();
         
         const data = new FormData(e.target);
-        /*
-        console.log(data.get('descrizione'));
-        fetch('https://dummyjson.com/products/1', {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                title: data.get('titolo'),
-                category: data.get('categoria'),
-                description: data.get('descrizione'),
-                price: data.get('prezzo'),
-            })
-        })
-            .then(res => res.json())
-            .then(console.log);
-        */
+
             try {
                 // SVILUPPO
                 const response = await axios.post('http://localhost:4001/product/create',

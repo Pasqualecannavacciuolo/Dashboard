@@ -41,6 +41,8 @@ function BaseTable({ data }) {
             const td_description = document.createElement("td");
             td_description.innerHTML = item.description;
             const td_price = document.createElement("td");
+            td_price.innerHTML = item.price+"€";
+            const td_link = document.createElement("td");
             const td_link_button = document.createElement("button");
             td_link_button.className = "btn";
             td_link_button.onclick = (e => handleClick(e, item.id));
@@ -51,13 +53,14 @@ function BaseTable({ data }) {
             td_link_btn_img.height = 16;
             td_link_btn_img.alt = "go arrow";
             td_link_button.appendChild(td_link_btn_img);
-            td_price.appendChild(td_link_button);
+            td_link.appendChild(td_link_button);
             // Aggiungo tutti i campi alla row principale
             row.appendChild(th);
             row.appendChild(td_title);
             row.appendChild(td_category);
             row.appendChild(td_description);
             row.appendChild(td_price);
+            row.appendChild(td_link);
             // Aggiungo la row all'insieme delle row
             rows.push(row);
         });

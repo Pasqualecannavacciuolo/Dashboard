@@ -1,3 +1,5 @@
+import "./Products.css";
+
 import React, {useEffect, useState} from "react";
 
 import BaseTable from "../../Components/Reusable/Tables/BaseTable";
@@ -31,8 +33,14 @@ const Products = () => {
 
     return(
         <>
-            <button onClick={addProduct} className="btn btn-success">Aggiungi</button>
-            <BaseTable data={products}/>
+            <div className="container rounded-3 m-5 text-start">
+                <h1 className="mb-3">Opzioni</h1>
+                <button onClick={addProduct} className="btn btn-success">Aggiungi</button>
+            </div>
+            <div className="container rounded-3 m-5">
+                <h1 className="text-start mb-3">Tabella generale dei prodotti</h1>
+                <BaseTable data={products}/>
+            </div>
         </>
     );
 }
