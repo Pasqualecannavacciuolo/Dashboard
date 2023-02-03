@@ -34,11 +34,11 @@ const Products = () => {
     return(
         <>
             <div className="container rounded-3 m-5 text-start">
-                <h1 className="display-1 mb-3">Opzioni</h1>
+                <h1 className="display-1 mb-3 fw-semibold">Opzioni</h1>
                 <button onClick={addProduct} className="btn button-success">Aggiungi</button>
             </div>
             <div className="container rounded-3 m-5">
-                <h1 className="display-1 text-start mb-3">Tabella generale dei prodotti</h1>
+                <h1 className="display-1 text-start mb-3 fw-semibold">Tabella generale dei prodotti</h1>
                 <BaseTable data={products}/>
             </div>
         </>

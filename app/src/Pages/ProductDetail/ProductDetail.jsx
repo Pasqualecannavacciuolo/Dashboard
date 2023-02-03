@@ -103,7 +103,7 @@ const ProductDetail = (props) => {
     return (
         
             <div className="container rounded-3 m-5 p-5">
-                <h1 className="text-start display-1 mt-3 mb-3">Dettagli del prodotto</h1>
+                <h1 className="text-start display-1 mt-3 mb-3 fw-semibold">Dettagli del prodotto</h1>
                 <div className="row text-start">
 
                     <div className="col">
@@ -112,19 +112,19 @@ const ProductDetail = (props) => {
                     <div className="col">
                         <form onSubmit={update}>
                             <div className  ="mb-3">
-                                <label htmlFor="titolo" className="form-label">Titolo</label>
+                                <label htmlFor="titolo" className="form-label fw-semibold">Titolo</label>
                                 <input name="titolo" type="text" className="form-control" id="titolo" aria-describedby="titolo" onChange={handleChangeTitle} defaultValue={title} />
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="categoria" className="form-label">Categoria</label>
+                                <label htmlFor="categoria" className="form-label fw-semibold">Categoria</label>
                                 <input name="categoria" type="text" className="form-control" id="categoria" onChange={handleChangeCategory} defaultValue={category}/>
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="descrizione" className="form-label">Descrizione</label>
+                                <label htmlFor="descrizione" className="form-label fw-semibold">Descrizione</label>
                                 <textarea name="descrizione" type="text" className="form-control" id="descrizione" onChange={handleChangeDescription} defaultValue={description}/>
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="prezzo" className="form-label">Prezzo</label>
+                                <label htmlFor="prezzo" className="form-label fw-semibold">Prezzo</label>
                                 <input name="prezzo" type="text" className="form-control" id="prezzo" onChange={handleChangePrice} defaultValue={price}/>
                             </div>
                             <button type="submit" className="btn button-primary">Aggiorna</button>

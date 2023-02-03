@@ -1,3 +1,29 @@
+.logo-1 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1;
+    font-family: Montserrat;
+    font-variant-ligatures: none;
+    text-align: center;
+    text-anchor: middle
+}
+
+.logo {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 72px;
+    line-height: 1;
+    font-family: 'Montserrat Light Alt1';
+    font-variant-ligatures: none;
+    text-align: center;
+    text-anchor: middle
+}
+
+image {
+    display: none;
+}
+
 .Register {
     height: 100vh;
     display: flex;

@@ -66,22 +66,22 @@ const ProductCreate = () => {
     return(
         <>
             <div className="container text-start rounded-3">
-                <h1 className="display-1 mb-5">Crea un prodotto</h1>
+                <h1 className="display-1 mb-5 fw-semibold">Crea un prodotto</h1>
                 <form onSubmit={addProduct}>
                     <div className="mb-3">
-                        <label htmlFor="titolo" className="form-label">Titolo</label>
+                        <label htmlFor="titolo" className="form-label fw-semibold">Titolo</label>
                         <input name="titolo" type="text" className="form-control" id="titolo" aria-describedby="titolo" onChange={handleChangeTitle} />
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="categoria" className="form-label">Categoria</label>
+                        <label htmlFor="categoria" className="form-label fw-semibold">Categoria</label>
                         <input name="categoria" type="text" className="form-control" id="categoria" onChange={handleChangeCategory} />
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="descrizione" className="form-label">Descrizione</label>
+                        <label htmlFor="descrizione" className="form-label fw-semibold">Descrizione</label>
                         <textarea name="descrizione" type="text" className="form-control" id="descrizione" onChange={handleChangeDescription} />
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="prezzo" className="form-label">Prezzo</label>
+                        <label htmlFor="prezzo" className="form-label fw-semibold">Prezzo</label>
                         <input name="prezzo" type="text" className="form-control" id="prezzo" onChange={handleChangePrice} />
                     </div>
                     <button type="submit" className="btn button-success">Crea</button>
