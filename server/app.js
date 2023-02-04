@@ -5,6 +5,8 @@ const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);*/
 const db = require("./queries");
+const table_orders = require("./ordersQuery");
+
 
 const Pool = require("pg").Pool
 const pool = new Pool({
@@ -22,7 +24,7 @@ const jwt = require("jsonwebtoken");
 const app = express();
 
 const corsOptions = {
-    origin: ['http://localhost:3000', 'https://dashboard-one-black.vercel.app'],
+    origin: ['http://127.0.0.1:4001','http://localhost:3000','http://localhost:4001', 'https://dashboard-one-black.vercel.app'],
     optionsSuccessStatus: 200,
     credentials: true
 }
@@ -214,5 +216,16 @@ app.get("/product/:productId", cors(corsOptions), async(req, res) => {
     
     
 });
+
+
+/**
+ * Endpoint per gli ordini
+ */
+app.get('/orders', cors(corsOptions),table_orders.getOrders)
+app.get('/order/:id', cors(corsOptions), table_orders.getOrderById)
+app.post('/order', cors(corsOptions), table_orders.createOrder)
+app.put('/order/:id', cors(corsOptions), table_orders.updateOrder)
+app.delete('/order/:id', cors(corsOptions), table_orders.deleteOrder)
+
 
 module.exports = app;
