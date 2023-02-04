@@ -31,7 +31,7 @@ const getOrderById = (request, response) => {
 
 const createOrder = (request, response) => {
   const stato = "ordinato"
-
+  
   pool.query('INSERT INTO orders (status) VALUES ($1)', [stato], (error, results) => {
     if (error) {
       throw error

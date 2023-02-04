@@ -6,6 +6,7 @@ const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);*/
 const db = require("./queries");
 const table_orders = require("./ordersQuery");
+const table_carts = require("./cartsQuery");
 
 
 const Pool = require("pg").Pool
@@ -226,6 +227,15 @@ app.get('/order/:id', cors(corsOptions), table_orders.getOrderById)
 app.post('/order', cors(corsOptions), table_orders.createOrder)
 app.put('/order/:id', cors(corsOptions), table_orders.updateOrder)
 app.delete('/order/:id', cors(corsOptions), table_orders.deleteOrder)
+
+/**
+ * Endpoint per i carrelli
+ */
+app.get('/carts', cors(corsOptions),table_carts.getCarts)
+app.get('/cart/:id', cors(corsOptions), table_carts.getCartById)
+app.post('/cart', cors(corsOptions), table_carts.createCart)
+app.put('/cart/:id', cors(corsOptions), table_carts.updateCart)
+app.delete('/cart/:id', cors(corsOptions), table_carts.deleteCart)
 
 
 module.exports = app;
