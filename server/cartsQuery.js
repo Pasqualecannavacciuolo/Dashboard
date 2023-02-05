@@ -30,13 +30,13 @@ const getCartById = (request, response) => {
 }
 
 const createCart = (request, response) => {
-    const products_json = request.body;
-    pool.query('INSERT INTO carts (products) VALUES ($1)', [products_json], (error, results) => {
+    const { products_json, user_id } = request.body;
+    pool.query('INSERT INTO carts (products, user_id) VALUES ($1, $2)', [products_json, user_id], (error, results) => {
         if (error) {
             throw error
         }
-        //response.status(201).send(`Cart created`)
-        response.status(201).json(results)
+        
+        response.status(201).send(`Cart created`)
     })
 }
 
