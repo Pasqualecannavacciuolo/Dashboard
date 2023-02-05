@@ -52,6 +52,7 @@ const OrderDetail = () => {
             }
         }
         getData();
+        // Gestisco lo stato di spedizione
         const shipping_timeline_elements = document.getElementsByClassName("child-element")
         const array = [...shipping_timeline_elements];
         array.forEach(element => {
@@ -71,15 +72,6 @@ const OrderDetail = () => {
         navigate('/dashboard/product/'+e.target.value);
     }
 
-
-
-    /*const fetchData = () => {
-        axios.get('https://dummyjson.com/products/'+orderId)
-        .then(response => {
-            const object = response.data;
-            setOrder(object);
-        });
-    }*/
 
     return (
         <>
