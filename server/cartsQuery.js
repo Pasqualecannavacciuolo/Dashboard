@@ -1,5 +1,5 @@
 const { response } = require("express");
-
+const table_orders = require("./ordersQuery");
 
 const Pool = require("pg").Pool
 const pool = new Pool({
@@ -30,12 +30,13 @@ const getCartById = (request, response) => {
 }
 
 const createCart = (request, response) => {
-    const { products_json, user_id } = request.body;
-    pool.query('INSERT INTO carts (products, user_id) VALUES ($1, $2)', [products_json, user_id], (error, results) => {
+  const { products_json, user_id } = request.body;
+    pool.query('INSERT INTO carts (products, user_id) VALUES ($1, $2) RETURNING *', [products_json, user_id], (error, results) => {
         if (error) {
             throw error
         }
-        
+        const cart_id = results.rows[0]['id'];
+        table_orders.createOrder(request, response, cart_id);
         response.status(201).send(`Cart created`)
     })
 }

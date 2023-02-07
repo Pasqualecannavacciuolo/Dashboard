@@ -29,14 +29,12 @@ const getOrderById = (request, response) => {
   })
 }
 
-const createOrder = (request, response) => {
+const createOrder = (request, response, cartId) => {
   const stato = "ordinato"
-  
-  pool.query('INSERT INTO orders (status) VALUES ($1)', [stato], (error, results) => {
+  pool.query('INSERT INTO orders (status, cart_id) VALUES ($1, $2)', [stato, cartId], (error, results) => {
     if (error) {
       throw error
     }
-    response.status(201).send(`Order added with ID: ${results.insertId}`)
   })
 }
 
