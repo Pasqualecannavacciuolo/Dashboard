@@ -23,13 +23,15 @@ function SimpleTable({ data }) {
 
     let items = [];
     items = data;
+    console.log(items)
+
+    if(items.length > 30) {
+        items = items.slice(0,items.length/2);
+    }
     
-    items = items.slice(0,items.length/2);
 
     // Creo l'eleemnto per indicare lo status dell'ordine
-    function setShippedStatus() {
-        const status = getRandomItem(shippedStatus);
-         
+    function setShippedStatus(status) {
         const element = document.createElement("span");
         
         // eslint-disable-next-line default-case
@@ -76,13 +78,11 @@ function SimpleTable({ data }) {
             th.scope = "row";
             th.innerHTML = item.id;
             const td_totalProducts = document.createElement("td");
-            td_totalProducts.innerHTML = item.totalProducts;
+            td_totalProducts.innerHTML = item.items;
             const td_total = document.createElement("td");
-            td_total.innerHTML = item.total;
-            const td_userId = document.createElement("td");
-            td_userId.innerHTML = item.userId;
+            td_total.innerHTML = item.cart_total;
             const td_status = document.createElement("td");
-            const element = setShippedStatus();
+            const element = setShippedStatus(item.status);
             td_status.appendChild(element);
             const td_link = document.createElement("td");
             const td_link_button = document.createElement("button");
@@ -100,7 +100,6 @@ function SimpleTable({ data }) {
             row.appendChild(th);
             row.appendChild(td_totalProducts);
             row.appendChild(td_total);
-            row.appendChild(td_userId);
             row.appendChild(td_status);
             row.appendChild(td_link);
             // Aggiungo la row all'insieme delle row
@@ -134,7 +133,6 @@ function SimpleTable({ data }) {
                     <th scope="col">ID</th>
                     <th scope="col">Quantità</th>
                     <th scope="col">Totale</th>
-                    <th scope="col">User ID</th>
                     <th scope="col">Stato</th>
                 </tr>
             </thead>

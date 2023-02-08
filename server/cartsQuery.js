@@ -31,13 +31,27 @@ const getCartById = (request, response) => {
 
 const createCart = (request, response) => {
   const { products_json, user_id } = request.body;
+  
+  const products_array = Object.values(products_json)
+  const items = products_array.length;
+  let cart_total = 0;
+
+  products_array.forEach(element => {
+    cart_total = cart_total + element.prezzo;
+  });
+    
+
     pool.query('INSERT INTO carts (products, user_id) VALUES ($1, $2) RETURNING *', [products_json, user_id], (error, results) => {
         if (error) {
             throw error
         }
         const cart_id = results.rows[0]['id'];
-        table_orders.createOrder(request, response, cart_id);
-        response.status(201).send(`Cart created`)
+
+
+
+        table_orders.createOrder(request, response, cart_id, items, cart_total);
+        //response.status(201).send(`Cart created`)
+        response.status(201).send(products_json)
     })
 }
 

@@ -117,9 +117,10 @@ const HomeDashboard = () => {
     const [orders, setOrders] = useState([]);
     const loadData = async () => {
         
-        axios.get('https://dummyjson.com/carts')
+        axios.get('http://localhost:4001/orders')
             .then(response => {
-                setOrders(response.data.carts);
+                
+                setOrders(response.data);
             });
         
             /*try {
