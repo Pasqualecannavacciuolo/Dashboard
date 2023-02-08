@@ -87,7 +87,7 @@ function SimpleTable({ data }) {
             const td_link = document.createElement("td");
             const td_link_button = document.createElement("button");
             td_link_button.className = "btn";
-            td_link_button.onclick = (e => handleClick(e, item.id, element.innerHTML));
+            td_link_button.onclick = (e => handleClick(e, item.id, item.status));
             const td_link_btn_img = document.createElement("img");
             td_link_btn_img.className = "rounded-circle flex-shrink-0";
             td_link_btn_img.src = go_arrow;
