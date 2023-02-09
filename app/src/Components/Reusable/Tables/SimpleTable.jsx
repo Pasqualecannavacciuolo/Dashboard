@@ -23,7 +23,6 @@ function SimpleTable({ data }) {
 
     let items = [];
     items = data;
-    console.log(items)
 
     if(items.length > 30) {
         items = items.slice(0,items.length/2);
@@ -58,9 +57,9 @@ function SimpleTable({ data }) {
     }
 
     // Vado alla pagine dell'ordine
-    function handleClick(e, id, status) {
+    function handleClick(e, id) {
         e.preventDefault();
-        navigate('/dashboard/order/'+id+"/"+status);
+        navigate('/dashboard/order/'+id);
     }
 
     // Creo il table body
@@ -87,7 +86,7 @@ function SimpleTable({ data }) {
             const td_link = document.createElement("td");
             const td_link_button = document.createElement("button");
             td_link_button.className = "btn";
-            td_link_button.onclick = (e => handleClick(e, item.id, item.status));
+            td_link_button.onclick = (e => handleClick(e, item.id));
             const td_link_btn_img = document.createElement("img");
             td_link_btn_img.className = "rounded-circle flex-shrink-0";
             td_link_btn_img.src = go_arrow;

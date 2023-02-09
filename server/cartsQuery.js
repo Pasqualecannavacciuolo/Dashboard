@@ -30,9 +30,22 @@ const getCartById = (request, response) => {
 }
 
 const createCart = (request, response) => {
-  const { products_json, user_id } = request.body;
+  const { products, user_id } = request.body;
+
+  var products_json = {
+    prods: []
+  };
+
+  const products_array = Object.values(products);
+  products_array.map((item) => {
+    products_json.prods.push({
+      "id": item.id,
+      "prezzo": item.prezzo,
+    });
+  });
+
+  console.log(products_json)
   
-  const products_array = Object.values(products_json)
   const items = products_array.length;
   let cart_total = 0;
 

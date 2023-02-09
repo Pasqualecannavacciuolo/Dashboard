@@ -22,49 +22,55 @@ const OrderDetail = () => {
     const navigate = useNavigate();
 
     const { orderId } = useParams();
-    // Momentaneo con il DB non potrà essere manipolato
-    const { orderStatus } = useParams();
     
     const [order, setOrder] = useState({});
-    const [cartContent, setCartContent] = useState([{}]);
+    const [cartContent, setCartContent] = useState([]);
     const [cartTotal, setCartTotal] = useState(0);
-
+    const [cartId, setCartId] = useState(0);
     
 
     // Ottengo i dati del carrello
     useEffect(() => {
-        const getData = async () => {
+        const getOrderData = async () => {
             try {
-                const response = await axios.get('https://dummyjson.com/carts/' + orderId);
+                const response = await axios.get('http://localhost:4001/order/'+orderId);
                 const object = response.data;
 
                 setOrder(object);
-                setCartContent(object.products)
-
-                let somma = 0;
-                object.products.forEach(element => {
-                    somma = somma+element.price;
-                    setCartTotal(somma);
-                });
+                setCartId(object[0].cart_id);
+                setCartTotal(object[0].cart_total);
 
             } catch (err) {
                 console.log(err);
             }
         }
-        getData();
+        getOrderData();
+        const getCartData = async () => {
+            try {
+                if(cartId > 0){
+                    const cart_response = await axios.get('http://localhost:4001/cart/'+cartId);
+                    const object = cart_response.data[0].products.prods;
+                    
+                    setCartContent(object);
+                }
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        getCartData();
         // Gestisco lo stato di spedizione
-        const shipping_timeline_elements = document.getElementsByClassName("child-element")
+        /*const shipping_timeline_elements = document.getElementsByClassName("child-element")
         const array = [...shipping_timeline_elements];
         array.forEach(element => {
             const element_status = element.className.split("child-element").pop();
             const element_status_without_space = element_status.trim()
            
             // Setto come attivo lo stato della spedizione in base all'url momentaneamente
-            if(element_status_without_space === orderStatus) {
+            if(element_status_without_space === order.status) {
                 element.className="child-element status";
             }
-        });
-    }, [orderId, orderStatus]);
+        });*/
+    }, [cartId, order.status, orderId]);
 
 
     // Navigo alla paginad el prodotto
@@ -102,16 +108,14 @@ const OrderDetail = () => {
                                         </h2>
                                         <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                             <div className="accordion-body">
-                                                {cartContent.map((item) => (
-
+                                                {cartContent.map(item => (
                                                     <div key={item.id} className="list-group list-group-checkable d-grid gap-2 border-0 w-auto mt-1 mb-1">
                                                         <input className="list-group-item-check pe-none" onClick={handleClick} type="radio" name="listGroupCheckableRadios" id={item.id} value={item.id} />
                                                         <label className="list-group-item rounded-3 py-3" htmlFor={item.id}>
-                                                            {item.title}
-                                                            <span className="d-block small opacity-50">{item.price}€</span>
+                                                            {item.id}
+                                                            <span className="d-block small opacity-50">{item.prezzo}€</span>
                                                         </label>
                                                     </div>
-
                                                 ))}
                                             </div>
                                         </div>
