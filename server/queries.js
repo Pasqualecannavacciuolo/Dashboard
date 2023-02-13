@@ -1,5 +1,8 @@
 const bcrypt = require("bcryptjs");
-const { response } = require("express");
+const lzString = require("lz-string")
+
+
+const fs = require('fs');
 
 const Pool = require("pg").Pool
 const pool = new Pool({
@@ -103,24 +106,47 @@ const createUser = (user) => {
 }
 
 const createProduct = (product) => {
-  const title = product.title;
-  const category = product.category;
-  const description = product.description;
-  const price = product.price;
-
-  // Controllo che i dati ricevuti non siano vuoti
-  if((title == undefined || title == null || title == '') 
-  || (category == undefined || category == null || category == '') 
-  || (description == undefined || description == null || description == '') 
-  || (price == undefined || price == null || category == '')) {
-    return 1;
+  const title = product.titolo;
+  const category = product.categoria;
+  const description = product.descrizione;
+  const price = product.prezzo;
+  const image = product.image;
+  image.mv('./upload/' + image.name);
+  
+  function getImageExtension(str) {
+    return str.split('.')[1];
   }
 
-  pool.query('INSERT INTO products (title, category, description, price) VALUES ($1, $2, $3, $4)', [title, category, description, price], (error, results) => {
-    if (error) {
-      throw error
+  setTimeout(() => {
+    const extension = getImageExtension(image.name);
+    console.log(extension)
+    const prefix = "data:image/"+extension+";base64,"
+    let imageAsBase64 = fs.readFileSync('./upload/' + image.name, 'base64');
+    imageAsBase64 = lzString.compressToBase64(imageAsBase64);
+    
+    /*
+    console.log("COMPRESSED:",imageAsBase64.length)
+    console.log("DECOMPRESSED:",lzString.decompressFromBase64(imageAsBase64).length)
+    */
+
+    const imageFinal = prefix+imageAsBase64;
+
+    // Controllo che i dati ricevuti non siano vuoti
+    if ((title == undefined || title == null || title == '')
+      || (category == undefined || category == null || category == '')
+      || (description == undefined || description == null || description == '')
+      || (price == undefined || price == null || category == '')) {
+      return 1;
     }
-  })
+
+    pool.query('INSERT INTO products (title, category, description, price, img) VALUES ($1, $2, $3, $4, $5)', [title, category, description, price, imageFinal], (error, results) => {
+      if (error) {
+        throw error
+      }
+    })
+    fs.unlinkSync('./upload/' + image.name)
+  }, 1500);
+  
 }
 
 const updateUser = (request, response) => {

@@ -8,6 +8,15 @@ const ProductCreate = () => {
     const [category, setCategory] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
+    const [image, setImage] = useState(null);
+
+    const [file, setFile] = useState();
+    const [fileName, setFileName] = useState("");
+
+    const saveFile = (e) => {
+        setFile(e.target.files[0]);
+        setFileName(e.target.files[0].name);
+    };
 
     const handleChangeTitle = event => {
         setTitle(event.target.value);
@@ -25,22 +34,29 @@ const ProductCreate = () => {
         setPrice(event.target.value);
     };
 
+    const handleChangeImage = event => {
+        setImage(event.target.files[0]);
+    };
+
     const addProduct = async (e) => {
         e.preventDefault();
         const data = new FormData(e.target);
+        data.append("file", file);
+        //data.append("fileName", fileName);
         try {
             // SVILUPPO
-            const response = await axios.post('http://localhost:4001/product/create',
+            const response = await axios.post('http://localhost:4001/product/create',data,
             // PRODUZIONE
             //const response = await axios.post('https://dashboard-backend-la3z.onrender.com/login',
-                JSON.stringify({ 
+                /*JSON.stringify({ 
                     title: data.get('titolo'),
                     category: data.get('categoria'),
                     description: data.get('descrizione'),
                     price: data.get('prezzo'),
-                 }),
+                    image: image
+                 }),*/
                 {
-                    headers: { 'Content-Type': 'application/json' },
+                    /*headers: { 'Content-Type': 'application/json' },*/
                     withCredentials: true 
                 }
             );
@@ -83,6 +99,10 @@ const ProductCreate = () => {
                     <div className="mb-3">
                         <label htmlFor="prezzo" className="form-label fw-semibold">Prezzo</label>
                         <input name="prezzo" type="text" className="form-control" id="prezzo" onChange={handleChangePrice} />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="image" className="form-label">Scegli immagine</label>
+                        <input name="image" className="form-control" type="file" id="image" onChange={saveFile}/>
                     </div>
                     <button type="submit" className="btn button-success">Crea</button>
                 </form>

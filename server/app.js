@@ -18,7 +18,9 @@ const pool = new Pool({
   port: 5432,
 })
 
+
 const express = require("express");
+const fileupload = require("express-fileupload");
 const cors = require("cors");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -32,6 +34,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions))
 app.use(express.json());
+app.use(fileupload());
 
 app.post("/register", cors(corsOptions), async (req, res) => {
     try {
@@ -175,16 +178,19 @@ app.post("/login", cors(corsOptions), async (req, res) => {
 app.post("/product/create", cors(corsOptions), async (req, res) => {
     try {
 
+        console.log(req.body)
         // Ottengo i dati dal form
-        const { title, category, description, price } = req.body;
+        const { titolo, categoria, descrizione, prezzo } = req.body;
+        const image = req.files.file;
+        console.log(image)
 
         // Aggiungo l'utente al Database
-        const product_obj = { title, category, description, price };
+        const product_obj = { titolo, categoria, descrizione, prezzo, image };
         let result = db.createProduct(product_obj);
 
         // Tutto è andato bene passo i dati nella RESPONSE
         if (result == undefined) {
-            res.status(201).json({ title, category, description, price })
+            res.status(201).json({ titolo, categoria, descrizione, prezzo, image })
         }
 
         // C'è stato qualche problema nell'inserimento nel Database
