@@ -201,6 +201,8 @@ app.post("/product/create", cors(corsOptions), async (req, res) => {
     }
 });
 
+app.put('/product/:productId',cors(corsOptions), db.updateProduct);
+
 app.get('/products', db.getProducts)
 
 app.get("/product/:productId", cors(corsOptions), async(req, res) => {

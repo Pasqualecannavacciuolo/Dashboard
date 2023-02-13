@@ -3,6 +3,9 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import axios from 'axios';
+
+import lzString from 'lz-string';
+
 import StarRating from "../../Components/Reusable/Rating/StarRating";
 
 
@@ -22,6 +25,7 @@ const ProductDetail = (props) => {
     const [category, setCategory] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
+    const [image, setImage] = useState('');
 
     const handleChangeTitle = event => {
         setTitle(event.target.value);
@@ -57,17 +61,20 @@ const ProductDetail = (props) => {
         setCategory(product.category);
         setDescription(product.description);
         setPrice(product.price);
+        const prefix = "data:image/"+product.img_ext+";base64,";
+        const decodedBase64 = lzString.decompressFromBase64(product.img)
+        setImage(prefix+decodedBase64);
         
-    }, [product.category, product.description, product.price, product.title, productId]);
+    }, [product.category, product.description, product.img, product.img_ext, product.price, product.title, productId]);
 
     const update = async (e) => {
         e.preventDefault();
         
         const data = new FormData(e.target);
-
+        console.log(data)
             try {
                 // SVILUPPO
-                const response = await axios.post('http://localhost:4001/product/create',
+                const response = await axios.put('http://localhost:4001/product/'+productId,
                 // PRODUZIONE
                 //const response = await axios.post('https://dashboard-backend-la3z.onrender.com/login',
                     JSON.stringify({ 
@@ -107,7 +114,7 @@ const ProductDetail = (props) => {
                 <div className="row text-start">
 
                     <div className="col">
-                        <img src={product.thumbnail} width={"auto"} height={"auto"} alt="thumbnail"></img>
+                        <img className="rounded-3" src={image} width={"500"} height={"400"} alt="thumbnail"></img>
                     </div>
                     <div className="col">
                         <form onSubmit={update}>

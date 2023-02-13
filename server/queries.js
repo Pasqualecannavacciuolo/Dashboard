@@ -124,7 +124,7 @@ const createProduct = (product) => {
 
   setTimeout(() => {
     const extension = getImageExtension(image.name);
-    const prefix = "data:image/"+extension+";base64,"
+    //const prefix = "data:image/"+extension+";base64,"
     let imageAsBase64 = fs.readFileSync('./upload/' + image.name, 'base64');
     // Prima di salvare l'immagine la comprimo
     imageAsBase64 = lzString.compressToBase64(imageAsBase64);
@@ -134,9 +134,6 @@ const createProduct = (product) => {
     console.log("DECOMPRESSED:",lzString.decompressFromBase64(imageAsBase64).length)
     */
 
-    // Creo la stringa finale da salvare per l'immagine
-    const imageFinal = prefix+imageAsBase64;
-
     // Controllo che i dati ricevuti non siano vuoti
     if ((title == undefined || title == null || title == '')
       || (category == undefined || category == null || category == '')
@@ -145,7 +142,7 @@ const createProduct = (product) => {
       return 1;
     }
 
-    pool.query('INSERT INTO products (title, category, description, price, img) VALUES ($1, $2, $3, $4, $5)', [title, category, description, price, imageFinal], (error, results) => {
+    pool.query('INSERT INTO products (title, category, description, price, img, img_ext) VALUES ($1, $2, $3, $4, $5, $6)', [title, category, description, price, imageAsBase64, extension], (error, results) => {
       if (error) {
         throw error
       }
@@ -172,8 +169,9 @@ const updateUser = (request, response) => {
 }
 
 const updateProduct = (request, response) => {
-  const id = parseInt(request.params.id)
+  const id = parseInt(request.params.productId)
   const { title, category, description, price } = request.body
+
 
   pool.query(
     'UPDATE products SET title = $1, category = $2, description = $3, price = $4 WHERE id = $5',
