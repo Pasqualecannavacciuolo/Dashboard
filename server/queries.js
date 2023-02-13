@@ -113,15 +113,20 @@ const createProduct = (product) => {
   const image = product.image;
   image.mv('./upload/' + image.name);
   
+  /**
+   * Funzione che serve per ottenere l'estensione di un file
+   * @param str 
+   * @returns 
+   */
   function getImageExtension(str) {
     return str.split('.')[1];
   }
 
   setTimeout(() => {
     const extension = getImageExtension(image.name);
-    console.log(extension)
     const prefix = "data:image/"+extension+";base64,"
     let imageAsBase64 = fs.readFileSync('./upload/' + image.name, 'base64');
+    // Prima di salvare l'immagine la comprimo
     imageAsBase64 = lzString.compressToBase64(imageAsBase64);
     
     /*
@@ -129,6 +134,7 @@ const createProduct = (product) => {
     console.log("DECOMPRESSED:",lzString.decompressFromBase64(imageAsBase64).length)
     */
 
+    // Creo la stringa finale da salvare per l'immagine
     const imageFinal = prefix+imageAsBase64;
 
     // Controllo che i dati ricevuti non siano vuoti

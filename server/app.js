@@ -178,11 +178,9 @@ app.post("/login", cors(corsOptions), async (req, res) => {
 app.post("/product/create", cors(corsOptions), async (req, res) => {
     try {
 
-        console.log(req.body)
         // Ottengo i dati dal form
         const { titolo, categoria, descrizione, prezzo } = req.body;
         const image = req.files.file;
-        console.log(image)
 
         // Aggiungo l'utente al Database
         const product_obj = { titolo, categoria, descrizione, prezzo, image };
