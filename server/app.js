@@ -36,6 +36,7 @@ app.use(cors(corsOptions))
 app.use(express.json());
 app.use(fileupload());
 
+
 app.post("/register", cors(corsOptions), async (req, res) => {
     try {
         // Ottengo i dati dal form

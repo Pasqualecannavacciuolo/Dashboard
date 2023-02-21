@@ -23,6 +23,7 @@ function SimpleTable({ data }) {
 
     let items = [];
     items = data;
+    
 
     if(items.length > 30) {
         items = items.slice(0,items.length/2);
@@ -64,64 +65,66 @@ function SimpleTable({ data }) {
 
     // Creo il table body
     function createTableBody() {
+        if (window.localStorage.getItem("ordersLoaded") !== "True") {
+            window.localStorage.setItem("ordersLoaded", "True");
+            const father = document.getElementById('father');
 
-        const father = document.getElementById('father')
+            const rows = [];
 
-        const rows = [];
+            items.forEach(item => {
+                const row = document.createElement("tr");
+                row.className = "table-content align-middle";
+                row.id = item.id;
+                const th = document.createElement("th");
+                th.scope = "row";
+                th.innerHTML = item.id;
+                const td_totalProducts = document.createElement("td");
+                td_totalProducts.innerHTML = item.items;
+                const td_total = document.createElement("td");
+                td_total.innerHTML = item.cart_total;
+                const td_status = document.createElement("td");
+                const element = setShippedStatus(item.status);
+                td_status.appendChild(element);
+                const td_link = document.createElement("td");
+                const td_link_button = document.createElement("button");
+                td_link_button.className = "btn";
+                td_link_button.onclick = (e => handleClick(e, item.id));
+                const td_link_btn_img = document.createElement("img");
+                td_link_btn_img.className = "rounded-circle flex-shrink-0";
+                td_link_btn_img.src = go_arrow;
+                td_link_btn_img.width = 16;
+                td_link_btn_img.height = 16;
+                td_link_btn_img.alt = "go arrow";
+                td_link_button.appendChild(td_link_btn_img);
+                td_link.appendChild(td_link_button);
+                // Aggiungo tutti i campi alla row principale
+                row.appendChild(th);
+                row.appendChild(td_totalProducts);
+                row.appendChild(td_total);
+                row.appendChild(td_status);
+                row.appendChild(td_link);
+                // Aggiungo la row all'insieme delle row
+                rows.push(row);
+            });
 
-        items.forEach(item => {
-            const row = document.createElement("tr");
-            row.className = "table-content align-middle";
-            row.id = item.id;
-            const th = document.createElement("th");
-            th.scope = "row";
-            th.innerHTML = item.id;
-            const td_totalProducts = document.createElement("td");
-            td_totalProducts.innerHTML = item.items;
-            const td_total = document.createElement("td");
-            td_total.innerHTML = item.cart_total;
-            const td_status = document.createElement("td");
-            const element = setShippedStatus(item.status);
-            td_status.appendChild(element);
-            const td_link = document.createElement("td");
-            const td_link_button = document.createElement("button");
-            td_link_button.className = "btn";
-            td_link_button.onclick = (e => handleClick(e, item.id));
-            const td_link_btn_img = document.createElement("img");
-            td_link_btn_img.className = "rounded-circle flex-shrink-0";
-            td_link_btn_img.src = go_arrow;
-            td_link_btn_img.width = 16;
-            td_link_btn_img.height = 16;
-            td_link_btn_img.alt = "go arrow";
-            td_link_button.appendChild(td_link_btn_img);
-            td_link.appendChild(td_link_button);
-            // Aggiungo tutti i campi alla row principale
-            row.appendChild(th);
-            row.appendChild(td_totalProducts);
-            row.appendChild(td_total);
-            row.appendChild(td_status);
-            row.appendChild(td_link);
-            // Aggiungo la row all'insieme delle row
-            rows.push(row);
-        });
-        
 
-        
-        return (
-            <>
-                {rows.forEach(row => {
-                    /*const id = row.id;
-                    for (const child of row.children) {
-                        if(child.id === "td_link") {
-                            const link_arrow = document.createElement('span');
-                            link_arrow.append(<Link props={id}></Link>);
-                            child.appendChild(link_arrow);
-                        }
-                      }*/
-                    father.appendChild(row);                  
-                })}
-            </>
-        );
+
+            return (
+                <>
+                    {rows.forEach(row => {
+                        /*const id = row.id;
+                        for (const child of row.children) {
+                            if(child.id === "td_link") {
+                                const link_arrow = document.createElement('span');
+                                link_arrow.append(<Link props={id}></Link>);
+                                child.appendChild(link_arrow);
+                            }
+                          }*/
+                        father.appendChild(row);
+                    })}
+                </>
+            );
+        }
     }
 
 

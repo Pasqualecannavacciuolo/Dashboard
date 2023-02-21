@@ -136,6 +136,7 @@ const HomeDashboard = () => {
 
     useEffect(() => {
         loadData();
+        window.localStorage.setItem("ordersLoaded", "False");
     }, []);
 
 

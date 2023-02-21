@@ -24,6 +24,7 @@ const Products = () => {
 
     useEffect(() => {
         loadData();
+        window.localStorage.setItem("productsLoaded", "False");
     }, []);
 
     const addProduct = async (e) => {
