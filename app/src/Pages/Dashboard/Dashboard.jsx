@@ -34,7 +34,7 @@ const Dashboard = () => {
     useEffect(() => {
         setTimeout(() => {
             setLoaded("true");
-        }, 3000);
+        }, 900);
         checkAuth();
     });
 
